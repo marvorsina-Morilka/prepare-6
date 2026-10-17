@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Англійська мова 6 клас: Present Simple vs Present Continuous</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Nunito & Lexend -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            greenDark: '#1b5e20',
+                            green: '#2e7d32',
+                            greenLight: '#4caf50',
+                            greenSoft: '#e8f5e9',
+                            orangeDark: '#e65100',
+                            orange: '#ff9800',
+                            orangeLight: '#ffe0b2',
+                            orangeSoft: '#fff3e0'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                        heading: ['Lexend', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #fff3e0 100%);
+            background-attachment: fixed;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Lexend', sans-serif;
+        }
+
+        .task-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .task-card:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Print styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .task-card {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+                break-inside: avoid;
+                margin-bottom: 1.5rem !important;
+            }
+            .tab-content {
+                display: block !important;
+            }
+            details {
+                display: block !important;
+            }
+            details summary {
+                display: none !important;
+            }
+            .answer-key-section {
+                page-break-before: always;
+            }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4caf50;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2e7d32;
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800 pb-12">
+
+    <!-- Sticky Navigation Header -->
+    <header class="no-print sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-brand-green shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <span class="bg-gradient-to-r from-brand-green to-brand-orange text-white text-xl font-bold px-3 py-1 rounded-xl shadow">
+                    6 клас
+                </span>
+                <h1 class="text-lg md:text-xl font-bold text-slate-800 hidden sm:block">
+                    Present Simple vs Continuous
+                </h1>
+            </div>
+
+            <!-- Quick Navigation Buttons -->
+            <div class="flex items-center space-x-2 text-sm font-semibold">
+                <button onclick="switchTab('student')" id="btn-student" class="tab-btn px-4 py-2 rounded-xl bg-brand-green text-white shadow hover:bg-brand-greenDark transition flex items-center space-x-2">
+                    <i class="fa-solid fa-book-open"></i>
+                    <span>Зошит учня</span>
+                </button>
+                <button onclick="switchTab('teacher')" id="btn-teacher" class="tab-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center space-x-2">
+                    <i class="fa-solid fa-user-ninja text-brand-orangeDark"></i>
+                    <span>Відповіді (Вчитель)</span>
+                </button>
+                <button onclick="window.print()" class="px-3 py-2 rounded-xl bg-brand-orange text-white hover:bg-brand-orangeDark transition shadow" title="Друкувати зошит">
+                    <i class="fa-solid fa-print"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-5xl mx-auto px-4 pt-6">
+
+        <!-- Banner Header -->
+        <div class="bg-gradient-to-r from-brand-green to-emerald-600 rounded-3xl p-6 md:p-8 text-white shadow-xl mb-8 relative overflow-hidden">
+            <div class="relative z-10 max-w-2xl">
+                <div class="inline-block bg-brand-orange text-white font-bold text-xs uppercase tracking-wider px-3 py-1 rounded-full mb-3 shadow">
+                    НУШ • Практичний робочий зошит
+                </div>
+                <h1 class="text-3xl md:text-4xl font-extrabold mb-3">
+                    Present Simple or Present Continuous?
+                </h1>
+                <p class="text-emerald-100 text-base md:text-lg">
+                    Цікавий інтерактивний тренажер із граматики англійської мови. Виконуй завдання, досліджуй правила та розвивай свої навички!
+                </p>
+                <!-- Quick Student Info Inputs -->
+                <div class="no-print mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 bg-white/10 backdrop-blur-sm p-3 rounded-2xl border border-white/20">
+                    <input type="text" placeholder="Ім'я та Прізвище учня..." class="px-3 py-2 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange w-full">
+                    <input type="text" placeholder="Клас (напр. 6-А)..." class="px-3 py-2 rounded-xl text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange w-full">
+                </div>
+            </div>
+            <!-- Decorative Image -->
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=500&q=80" alt="Learning English" class="hidden md:block absolute -right-4 -bottom-8 w-72 h-72 object-cover rounded-full border-4 border-white/30 shadow-2xl opacity-90 transform rotate-6">
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 1: STUDENT WORKBOOK -->
+        <!-- ========================================================================= -->
+        <div id="tab-student" class="tab-content space-y-10">
+
+            <!-- 🟢 SECTION 1: BASIC LEVEL -->
+            <section class="space-y-6">
+                <div class="flex items-center space-x-3 border-b-4 border-brand-green pb-2">
+                    <span class="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center font-bold">🟢</span>
+                    <h2 class="text-2xl font-bold text-brand-greenDark">БАЗОВИЙ РІВЕНЬ (Basic Level)</h2>
+                </div>
+
+                <!-- TASK 1 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-brand-green">
+                    <div class="flex flex-col md:flex-row justify-between gap-4 mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-brand-green uppercase tracking-wide">Завдання 1</span>
+                            <h3 class="text-xl font-bold text-slate-800">🔍 Grammar Detective: Signal Words</h3>
+                            <p class="text-slate-600 text-sm mt-1">
+                                <strong>Інструкція:</strong> Розподіли слова-маркери у відповідні колонки. Натискай або перетягуй слова.
+                            </p>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=200&q=80" class="w-20 h-20 rounded-xl object-cover self-center hidden sm:block shadow" alt="Detective">
+                    </div>
+
+                    <div class="bg-brand-orangeSoft p-4 rounded-xl mb-4 border border-brand-orangeLight">
+                        <p class="text-xs font-bold text-brand-orangeDark mb-2 uppercase">Слова для розподілу:</p>
+                        <div id="word-bank-t1" class="flex flex-wrap gap-2">
+                            <span onclick="moveWord(this, 'simple')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">always</span>
+                            <span onclick="moveWord(this, 'continuous')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">right now</span>
+                            <span onclick="moveWord(this, 'simple')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">usually</span>
+                            <span onclick="moveWord(this, 'continuous')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">at the moment</span>
+                            <span onclick="moveWord(this, 'simple')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">every Sunday</span>
+                            <span onclick="moveWord(this, 'continuous')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">today</span>
+                            <span onclick="moveWord(this, 'continuous')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">look!</span>
+                            <span onclick="moveWord(this, 'simple')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">often</span>
+                            <span onclick="moveWord(this, 'continuous')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">listen!</span>
+                            <span onclick="moveWord(this, 'simple')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">sometimes</span>
+                            <span onclick="moveWord(this, 'continuous')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">this week</span>
+                            <span onclick="moveWord(this, 'simple')" class="cursor-pointer bg-white px-3 py-1.5 rounded-lg text-sm font-semibold border border-brand-orange shadow-sm hover:bg-brand-orange hover:text-white transition">never</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-brand-greenSoft p-4 rounded-xl border border-brand-greenLight">
+                            <h4 class="font-bold text-brand-greenDark mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-repeat"></i> Present Simple
+                            </h4>
+                            <div id="col-simple" class="min-h-[120px] flex flex-wrap gap-2 p-2 bg-white/60 rounded-lg border border-dashed border-brand-green">
+                                <!-- Dropped here -->
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-200">
+                            <h4 class="font-bold text-blue-800 mb-2 flex items-center gap-2">
+                                <i class="fa-solid fa-spinner animate-spin"></i> Present Continuous
+                            </h4>
+                            <div id="col-continuous" class="min-h-[120px] flex flex-wrap gap-2 p-2 bg-white/60 rounded-lg border border-dashed border-blue-300">
+                                <!-- Dropped here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TASK 2 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-brand-green">
+                    <span class="text-xs font-bold text-brand-green uppercase tracking-wide">Завдання 2</span>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">⚡ Fact or Action Now?</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>Інструкція:</strong> Прочитай твердження. Визнач значення речення та обери відповідний варіант.
+                    </p>
+
+                    <div class="space-y-4">
+                        <!-- Q1 -->
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                            <p class="font-semibold text-slate-800 mb-2">1. I play basketball every Tuesday.</p>
+                            <div class="flex flex-wrap gap-4 text-sm">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="radio" name="t2_q1" class="accent-brand-green">
+                                    <span>A. Регулярна дія / факт</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="radio" name="t2_q1" class="accent-brand-green">
+                                    <span>B. Дія зараз</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Q2 -->
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                            <p class="font-semibold text-slate-800 mb-2">2. Look! The dog is running after the ball.</p>
+                            <div class="flex flex-wrap gap-4 text-sm">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="radio" name="t2_q2" class="accent-brand-green">
+                                    <span>A. Регулярна дія / факт</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="radio" name="t2_q2" class="accent-brand-green">
+                                    <span>B. Дія зараз</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Q3 -->
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                            <p class="font-semibold text-slate-800 mb-2">3. Water boils at 100 degrees Celsius.</p>
+                            <div class="flex flex-wrap gap-4 text-sm">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="radio" name="t2_q3" class="accent-brand-green">
+                                    <span>A. Регулярна дія / факт</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="radio" name="t2_q3" class="accent-brand-green">
+                                    <span>B. Дія зараз</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- Q4 -->
+                        <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                            <p class="font-semibold text-slate-800 mb-2">4. We are drinking hot chocolate at the cafe today.</p>
+                            <div class="flex flex-wrap gap-4 text-sm">
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="radio" name="t2_q4" class="accent-brand-green">
+                                    <span>A. Регулярна дія / факт</span>
+                                </label>
+                                <label class="flex items-center space-x-2 cursor-pointer">
+                                    <input type="radio" name="t2_q4" class="accent-brand-green">
+                                    <span>B. Дія зараз</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TASK 3 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-brand-green">
+                    <span class="text-xs font-bold text-brand-green uppercase tracking-wide">Завдання 3</span>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">✔️ True or False Quiz</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>Інструкція:</strong> Познач твердження як True або False. Якщо воно хибне — напиши виправлення у полі.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                            <p class="font-medium">1. Ми додаємо закінчення <strong>-ing</strong> до дієслова у часі <em>Present Simple</em>.</p>
+                            <div class="flex items-center space-x-4 text-sm font-semibold">
+                                <label><input type="radio" name="t3_q1" class="accent-brand-green"> True</label>
+                                <label><input type="radio" name="t3_q1" class="accent-brand-green"> False</label>
+                            </div>
+                            <input type="text" placeholder="Виправлення (якщо потрібно)..." class="w-full text-sm p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-green focus:outline-none">
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                            <p class="font-medium">2. Помічні дієслова часової форми <em>Present Continuous</em> — це <strong>am, is, are</strong>.</p>
+                            <div class="flex items-center space-x-4 text-sm font-semibold">
+                                <label><input type="radio" name="t3_q2" class="accent-brand-green"> True</label>
+                                <label><input type="radio" name="t3_q2" class="accent-brand-green"> False</label>
+                            </div>
+                            <input type="text" placeholder="Виправлення (якщо потрібно)..." class="w-full text-sm p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-green focus:outline-none">
+                        </div>
+
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                            <p class="font-medium">3. Дієслово <em>like</em> зазвичай <strong>не</strong> використовується у часі <em>Present Continuous</em>.</p>
+                            <div class="flex items-center space-x-4 text-sm font-semibold">
+                                <label><input type="radio" name="t3_q3" class="accent-brand-green"> True</label>
+                                <label><input type="radio" name="t3_q3" class="accent-brand-green"> False</label>
+                            </div>
+                            <input type="text" placeholder="Виправлення (якщо потрібно)..." class="w-full text-sm p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-green focus:outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TASK 4 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-brand-green">
+                    <span class="text-xs font-bold text-brand-green uppercase tracking-wide">Завдання 4</span>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">🚫 Odd One Out</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>Інструкція:</strong> Знайди та познач одне зайве речення у кожній групі.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-brand-orangeSoft border border-brand-orangeLight">
+                            <h4 class="font-bold text-brand-orangeDark mb-2">Група 1:</h4>
+                            <div class="space-y-2 text-sm">
+                                <label class="block p-2 bg-white rounded-lg border cursor-pointer hover:bg-orange-50">
+                                    <input type="radio" name="t4_g1" class="accent-brand-orange"> a) She speaks three languages.
+                                </label>
+                                <label class="block p-2 bg-white rounded-lg border cursor-pointer hover:bg-orange-50">
+                                    <input type="radio" name="t4_g1" class="accent-brand-orange"> b) He is riding his bike to school.
+                                </label>
+                                <label class="block p-2 bg-white rounded-lg border cursor-pointer hover:bg-orange-50">
+                                    <input type="radio" name="t4_g1" class="accent-brand-orange"> c) They spend their holidays in the mountains.
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-brand-orangeSoft border border-brand-orangeLight">
+                            <h4 class="font-bold text-brand-orangeDark mb-2">Група 2:</h4>
+                            <div class="space-y-2 text-sm">
+                                <label class="block p-2 bg-white rounded-lg border cursor-pointer hover:bg-orange-50">
+                                    <input type="radio" name="t4_g2" class="accent-brand-orange"> a) Listen! Someone is playing the piano.
+                                </label>
+                                <label class="block p-2 bg-white rounded-lg border cursor-pointer hover:bg-orange-50">
+                                    <input type="radio" name="t4_g2" class="accent-brand-orange"> b) I am typing a message to my friend right now.
+                                </label>
+                                <label class="block p-2 bg-white rounded-lg border cursor-pointer hover:bg-orange-50">
+                                    <input type="radio" name="t4_g2" class="accent-brand-orange"> c) My brother watches cartoons on Saturday morning.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 🟡 SECTION 2: INTERMEDIATE LEVEL -->
+            <section class="space-y-6">
+                <div class="flex items-center space-x-3 border-b-4 border-brand-orange pb-2 pt-4">
+                    <span class="w-8 h-8 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold">🟡</span>
+                    <h2 class="text-2xl font-bold text-brand-orangeDark">СЕРЕДНІЙ РІВЕНЬ (Intermediate Level)</h2>
+                </div>
+
+                <!-- TASK 5 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-brand-orange">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-brand-orange uppercase tracking-wide">Завдання 5</span>
+                            <h3 class="text-xl font-bold text-slate-800">⏰ Fill in the Time Machine</h3>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?auto=format&fit=crop&w=200&q=80" class="w-16 h-16 rounded-xl object-cover hidden sm:block shadow" alt="Time">
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>Інструкція:</strong> Вставити дієслова з дужок у правильній формі (Present Simple або Present Continuous).
+                    </p>
+
+                    <div class="space-y-3 font-medium">
+                        <div class="p-2 bg-slate-50 rounded-lg flex flex-wrap items-center gap-2">
+                            <span>1. Mia</span>
+                            <input type="text" placeholder="(read)" class="px-3 py-1 border border-slate-300 rounded-md text-sm font-bold text-brand-greenDark focus:ring-2 focus:ring-brand-orange focus:outline-none">
+                            <span>an interesting fantasy book at the moment.</span>
+                        </div>
+                        <div class="p-2 bg-slate-50 rounded-lg flex flex-wrap items-center gap-2">
+                            <span>2. Alex and Dan usually</span>
+                            <input type="text" placeholder="(go)" class="px-3 py-1 border border-slate-300 rounded-md text-sm font-bold text-brand-greenDark focus:ring-2 focus:ring-brand-orange focus:outline-none">
+                            <span>to the skate park on Fridays.</span>
+                        </div>
+                        <div class="p-2 bg-slate-50 rounded-lg flex flex-wrap items-center gap-2">
+                            <span>3. Be quiet! The baby</span>
+                            <input type="text" placeholder="(sleep)" class="px-3 py-1 border border-slate-300 rounded-md text-sm font-bold text-brand-greenDark focus:ring-2 focus:ring-brand-orange focus:outline-none">
+                            <span>.</span>
+                        </div>
+                        <div class="p-2 bg-slate-50 rounded-lg flex flex-wrap items-center gap-2">
+                            <span>4. My uncle</span>
+                            <input type="text" placeholder="(not / work)" class="px-3 py-1 border border-slate-300 rounded-md text-sm font-bold text-brand-greenDark focus:ring-2 focus:ring-brand-orange focus:outline-none">
+                            <span>on Sundays; he prefers resting.</span>
+                        </div>
+                        <div class="p-2 bg-slate-50 rounded-lg flex flex-wrap items-center gap-2">
+                            <input type="text" placeholder="(you / understand)" class="px-3 py-1 border border-slate-300 rounded-md text-sm font-bold text-brand-greenDark focus:ring-2 focus:ring-brand-orange focus:outline-none">
+                            <span>this rule now?</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TASK 6 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-brand-orange">
+                    <span class="text-xs font-bold text-brand-orange uppercase tracking-wide">Завдання 6</span>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">🔗 Match the Situations</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>Інструкція:</strong> З'єднай початок речення з правильним закінченням.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-4">
+                        <div class="space-y-2 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                            <p><strong>1.</strong> Max is putting on his warm jacket...</p>
+                            <p><strong>2.</strong> Max puts on his warm jacket...</p>
+                            <p><strong>3.</strong> They are driving to Kyiv today...</p>
+                            <p><strong>4.</strong> They drive to Kyiv every month...</p>
+                        </div>
+                        <div class="space-y-2 bg-amber-50 p-3 rounded-xl border border-amber-200">
+                            <p><strong>a)</strong> ...because they visit their grandparents every month.</p>
+                            <p><strong>b)</strong> ...because it is snowing outside right now.</p>
+                            <p><strong>c)</strong> ...to visit a new museum that opened this week.</p>
+                            <p><strong>d)</strong> ...whenever the weather turns cold in autumn.</p>
+                        </div>
+                    </div>
+
+                    <!-- Answer selector -->
+                    <div class="flex flex-wrap gap-4 text-sm font-bold bg-slate-100 p-3 rounded-xl">
+                        <span>1 — <select class="p-1 rounded border border-slate-300"><option>?</option><option>a</option><option>b</option><option>c</option><option>d</option></select></span>
+                        <span>2 — <select class="p-1 rounded border border-slate-300"><option>?</option><option>a</option><option>b</option><option>c</option><option>d</option></select></span>
+                        <span>3 — <select class="p-1 rounded border border-slate-300"><option>?</option><option>a</option><option>b</option><option>c</option><option>d</option></select></span>
+                        <span>4 — <select class="p-1 rounded border border-slate-300"><option>?</option><option>a</option><option>b</option><option>c</option><option>d</option></select></span>
+                    </div>
+                </div>
+
+                <!-- TASK 7 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-brand-orange">
+                    <span class="text-xs font-bold text-brand-orange uppercase tracking-wide">Завдання 7</span>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">🐛 Bug Fixer: Error Correction</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>Інструкція:</strong> Знайди помилку та запиши повністю правильне речення у полі.
+                    </p>
+
+                    <div class="space-y-4 text-sm">
+                        <div class="p-3 bg-red-50 rounded-xl border border-red-200">
+                            <p class="text-red-800 font-semibold mb-1">1. I am knowing the answer to this difficult question.</p>
+                            <input type="text" placeholder="Правильне речення..." class="w-full p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:outline-none">
+                        </div>
+                        <div class="p-3 bg-red-50 rounded-xl border border-red-200">
+                            <p class="text-red-800 font-semibold mb-1">2. Look! The bus comes around the corner.</p>
+                            <input type="text" placeholder="Правильне речення..." class="w-full p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:outline-none">
+                        </div>
+                        <div class="p-3 bg-red-50 rounded-xl border border-red-200">
+                            <p class="text-red-800 font-semibold mb-1">3. She don't like drinking cold milk in the morning.</p>
+                            <input type="text" placeholder="Правильне речення..." class="w-full p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:outline-none">
+                        </div>
+                        <div class="p-3 bg-red-50 rounded-xl border border-red-200">
+                            <p class="text-red-800 font-semibold mb-1">4. Why are you learn this poem right now?</p>
+                            <input type="text" placeholder="Правильне речення..." class="w-full p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:outline-none">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TASK 8 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-brand-orange">
+                    <span class="text-xs font-bold text-brand-orange uppercase tracking-wide">Завдання 8</span>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">⚖️ Compare the Context</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>Інструкція:</strong> Поясни українською мовою різницю у значеннях двох речень.
+                    </p>
+
+                    <div class="bg-brand-orangeSoft p-4 rounded-xl border border-brand-orangeLight mb-3 font-medium text-slate-800">
+                        <p><strong>A:</strong> My sister lives in Lviv.</p>
+                        <p><strong>B:</strong> My sister is living in Lviv this month.</p>
+                    </div>
+                    <textarea rows="3" placeholder="Твоє пояснення різниці у значеннях..." class="w-full text-sm p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-orange focus:outline-none"></textarea>
+                </div>
+
+                <!-- TASK 9 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-brand-orange">
+                    <span class="text-xs font-bold text-brand-orange uppercase tracking-wide">Завдання 9</span>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">💬 Complete the Dialogue</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>Інструкція:</strong> Доповни телефонну розмову двох друзів, розкривши дужки.
+                    </p>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3 text-sm">
+                        <p><strong>Oleh:</strong> Hi, Anna! What 1) <input type="text" placeholder="(you / do)" class="px-2 py-0.5 border rounded border-slate-300 text-brand-greenDark font-bold"> ?</p>
+                        <p><strong>Anna:</strong> Hey! I 2) <input type="text" placeholder="(cook)" class="px-2 py-0.5 border rounded border-slate-300 text-brand-greenDark font-bold"> pasta for lunch.</p>
+                        <p><strong>Oleh:</strong> Nice! Do you usually cook lunch yourself?</p>
+                        <p><strong>Anna:</strong> No, my mom usually 3) <input type="text" placeholder="(prepare)" class="px-2 py-0.5 border rounded border-slate-300 text-brand-greenDark font-bold"> lunch, but today she 4) <input type="text" placeholder="(work)" class="px-2 py-0.5 border rounded border-slate-300 text-brand-greenDark font-bold"> late.</p>
+                        <p><strong>Oleh:</strong> I see. Do you want to walk in the park later?</p>
+                        <p><strong>Anna:</strong> Sure! I always 5) <input type="text" placeholder="(enjoy)" class="px-2 py-0.5 border rounded border-slate-300 text-brand-greenDark font-bold"> our evening walks.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 🔴 SECTION 3: ADVANCED LEVEL -->
+            <section class="space-y-6">
+                <div class="flex items-center space-x-3 border-b-4 border-red-500 pb-2 pt-4">
+                    <span class="w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center font-bold">🔴</span>
+                    <h2 class="text-2xl font-bold text-red-700">ПОГЛИБЛЕНИЙ РІВЕНЬ (Advanced Level)</h2>
+                </div>
+
+                <!-- TASK 10 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-red-500">
+                    <span class="text-xs font-bold text-red-500 uppercase tracking-wide">Завдання 10</span>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">🔮 Stative Verbs Mystery</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>Інструкція:</strong> Зверни увагу на дієслова стану (Stative Verbs). Обери або впиши правильну форму.
+                    </p>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="p-3 bg-red-50 rounded-xl border border-red-200 flex flex-wrap items-center gap-2">
+                            <span>1. This cheese</span>
+                            <input type="text" placeholder="(taste)" class="px-3 py-1 border border-slate-300 rounded font-bold text-red-700">
+                            <span>delicious!</span>
+                        </div>
+                        <div class="p-3 bg-red-50 rounded-xl border border-red-200 flex flex-wrap items-center gap-2">
+                            <span>2. The chef</span>
+                            <input type="text" placeholder="(taste)" class="px-3 py-1 border border-slate-300 rounded font-bold text-red-700">
+                            <span>the soup right now to see if it needs more salt.</span>
+                        </div>
+                        <div class="p-3 bg-red-50 rounded-xl border border-red-200 flex flex-wrap items-center gap-2">
+                            <span>3. I</span>
+                            <input type="text" placeholder="(think)" class="px-3 py-1 border border-slate-300 rounded font-bold text-red-700">
+                            <span>this idea is fantastic.</span>
+                        </div>
+                        <div class="p-3 bg-red-50 rounded-xl border border-red-200 flex flex-wrap items-center gap-2">
+                            <span>4. Quiet, please! I</span>
+                            <input type="text" placeholder="(think)" class="px-3 py-1 border border-slate-300 rounded font-bold text-red-700">
+                            <span>about a hard math puzzle.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TASK 11 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-red-500">
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <span class="text-xs font-bold text-red-500 uppercase tracking-wide">Завдання 11</span>
+                            <h3 class="text-xl font-bold text-slate-800">📱 Problem Situation: Social Media Post Editor</h3>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=200&q=80" class="w-16 h-16 rounded-xl object-cover hidden sm:block shadow" alt="Instagram">
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>Інструкція:</strong> Твій колега переплутав часові форми у дописі для Instagram. Перепиши допис повністю без помилок.
+                    </p>
+
+                    <div class="p-4 bg-slate-100 rounded-xl border border-slate-300 mb-3 italic text-sm text-slate-700">
+                        "Hello everyone! I write this post from our biology room right now. Every Thursday, we are studying plants, but today we study sea creatures under the microscope! I am loving biology lessons because they are always interesting."
+                    </div>
+
+                    <textarea rows="4" placeholder="Твій відредагований допис..." class="w-full text-sm p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none font-medium text-slate-800"></textarea>
+                </div>
+
+                <!-- TASK 12 -->
+                <div class="task-card bg-white rounded-2xl p-6 shadow-md border-l-8 border-red-500">
+                    <span class="text-xs font-bold text-red-500 uppercase tracking-wide">Завдання 12</span>
+                    <h3 class="text-xl font-bold text-slate-800 mb-1">📸 Life Context: Photo Description</h3>
+                    <p class="text-slate-600 text-sm mb-4">
+                        <strong>Інструкція:</strong> Напиши 4–5 речень, описуючи звички вашої сім’ї у вихідні (Present Simple) та що конкретно відбувається на «фотографії» зараз (Present Continuous).
+                    </p>
+
+                    <textarea rows="4" placeholder="On weekends, my family usually... Today in this photo, we are..." class="w-full text-sm p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-red-500 focus:outline-none font-medium"></textarea>
+                </div>
+
+                <!-- TASK 13 -->
+                <div class="task-card bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-2xl p-6 shadow-lg">
+                    <span class="text-xs font-bold text-emerald-200 uppercase tracking-wide">Завдання 13</span>
+                    <h3 class="text-xl font-bold mb-1">🌟 Self-Reflection & Summary</h3>
+                    <p class="text-emerald-100 text-sm mb-4">
+                        Заповни чек-лист самоперевірки та оціни свою роботу на уроці.
+                    </p>
+
+                    <div class="space-y-3 text-sm bg-white/10 backdrop-blur-md p-4 rounded-xl border border-white/20">
+                        <div class="flex flex-wrap justify-between items-center gap-2">
+                            <span>1. Я розрізняю регулярні дії та дії в момент мовлення:</span>
+                            <select class="text-slate-800 px-2 py-1 rounded text-xs font-bold">
+                                <option>Обрати...</option>
+                                <option>Так! Все зрозуміло</option>
+                                <option>Потрібна ще практика</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-wrap justify-between items-center gap-2">
+                            <span>2. Я знаю, які дієслова (Stative Verbs) зазвичай НЕ вживаються у Continuous:</span>
+                            <select class="text-slate-800 px-2 py-1 rounded text-xs font-bold">
+                                <option>Обрати...</option>
+                                <option>Так! Знаю винятки</option>
+                                <option>Потрібна ще практика</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-wrap justify-between items-center gap-2">
+                            <span>3. Моє найскладніше завдання сьогодні:</span>
+                            <input type="text" placeholder="№..." class="w-16 px-2 py-1 rounded text-slate-800 text-xs font-bold">
+                        </div>
+                        <div class="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-white/20">
+                            <span>4. Моя самооцінка роботи:</span>
+                            <div class="flex space-x-3 text-xl">
+                                <button class="hover:scale-125 transition" title="Легко">🟢</button>
+                                <button class="hover:scale-125 transition" title="Були труднощі">🟡</button>
+                                <button class="hover:scale-125 transition" title="Потрібна допомога">🔴</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ========================================================================= -->
+        <!-- TAB 2: TEACHER'S ANSWER KEY & EXPLANATIONS -->
+        <!-- ========================================================================= -->
+        <div id="tab-teacher" class="tab-content hidden space-y-6 answer-key-section">
+
+            <div class="bg-gradient-to-r from-amber-500 to-brand-orange text-white rounded-2xl p-6 shadow-md mb-6">
+                <div class="flex items-center space-x-3">
+                    <i class="fa-solid fa-graduation-cap text-3xl"></i>
+                    <div>
+                        <h2 class="text-2xl font-bold">Відповіді та пояснення для вчителя</h2>
+                        <p class="text-amber-100 text-sm">Методичний ключ до завдань із роз'ясненням граматичних правил та критеріями оцінювання.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordion List for Tasks 1-13 -->
+            <div class="space-y-4">
+
+                <!-- Key 1 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-brand-green group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №1 — Grammar Detective: Signal Words</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 space-y-2 border-t pt-3">
+                        <p><strong>Правильна відповідь:</strong></p>
+                        <p>• <strong>Present Simple:</strong> always, usually, every Sunday, often, sometimes, never.</p>
+                        <p>• <strong>Present Continuous:</strong> right now, at the moment, today, look!, listen!, this week.</p>
+                        <p class="text-xs bg-slate-50 p-2 rounded text-slate-600"><strong>Пояснення:</strong> Маркери Present Simple вказують на періодичність чи регулярність дій. Маркери Continuous вказують на дію в момент мовлення або тимчасові обставини.</p>
+                    </div>
+                </details>
+
+                <!-- Key 2 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-brand-green group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №2 — Fact or Action Now?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 space-y-2 border-t pt-3">
+                        <p><strong>Правильні відповіді:</strong> 1 - A; 2 - B; 3 - A; 4 - B.</p>
+                        <p class="text-xs bg-slate-50 p-2 rounded text-slate-600"><strong>Пояснення:</strong> Речення 1 та 3 описують звичну регулярну дію та науковий факт. Речення 2 та 4 описують події безпосередньо в момент мовлення.</p>
+                    </div>
+                </details>
+
+                <!-- Key 3 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-brand-green group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №3 — True or False Quiz</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 space-y-2 border-t pt-3">
+                        <p><strong>Правильні відповіді:</strong></p>
+                        <p>1. <strong>False.</strong> Виправлення: Закінчення -ing додається у Present Continuous, а не в Present Simple.</p>
+                        <p>2. <strong>True.</strong></p>
+                        <p>3. <strong>True.</strong> (Like — це stative verb).</p>
+                    </div>
+                </details>
+
+                <!-- Key 4 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-brand-green group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №4 — Odd One Out</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 space-y-2 border-t pt-3">
+                        <p>1. <strong>b</strong> (He is riding his bike) — вжито Present Continuous, інші в Present Simple.</p>
+                        <p>2. <strong>c</strong> (My brother watches cartoons) — вжито Present Simple, інші в Present Continuous.</p>
+                    </div>
+                </details>
+
+                <!-- Key 5 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-brand-orange group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №5 — Fill in the Time Machine</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 space-y-1 border-t pt-3">
+                        <p>1. <strong>is reading</strong> (at the moment)</p>
+                        <p>2. <strong>go</strong> (usually)</p>
+                        <p>3. <strong>is sleeping</strong> (Be quiet!)</p>
+                        <p>4. <strong>does not work / doesn't work</strong> (on Sundays)</p>
+                        <p>5. <strong>Do you understand</strong> (understand — дієслово стану!)</p>
+                    </div>
+                </details>
+
+                <!-- Key 6 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-brand-orange group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №6 — Match the Situations</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 border-t pt-3">
+                        <p><strong>Відповідності:</strong> 1 — b, 2 — d, 3 — c, 4 — a.</p>
+                    </div>
+                </details>
+
+                <!-- Key 7 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-brand-orange group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №7 — Bug Fixer: Error Correction</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 space-y-2 border-t pt-3">
+                        <p>1. <strong>I know the answer...</strong> (know не вживається в Continuous).</p>
+                        <p>2. <strong>Look! The bus is coming...</strong> (дія відбувається прямо зараз).</p>
+                        <p>3. <strong>She doesn't like...</strong> (для She використовуємо doesn't).</p>
+                        <p>4. <strong>Why are you learning...</strong> (допоміжне are вимагає дієслова з -ing).</p>
+                    </div>
+                </details>
+
+                <!-- Key 8 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-brand-orange group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №8 — Compare the Context</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 border-t pt-3 space-y-2">
+                        <p><strong>Орієнтовна відповідь:</strong> Речення A означає постійне проживання (постійний факт). Речення B означає тимчасове проживання лише протягом цього місяця.</p>
+                    </div>
+                </details>
+
+                <!-- Key 9 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-brand-orange group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №9 — Complete the Dialogue</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 border-t pt-3 space-y-1">
+                        <p>1) <strong>are you doing</strong></p>
+                        <p>2) <strong>am cooking / 'm cooking</strong></p>
+                        <p>3) <strong>prepares</strong></p>
+                        <p>4) <strong>is working / 's working</strong></p>
+                        <p>5) <strong>enjoy</strong></p>
+                    </div>
+                </details>
+
+                <!-- Key 10 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-red-500 group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №10 — Stative Verbs Mystery</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 border-t pt-3 space-y-1">
+                        <p>1. <strong>tastes</strong> (мати смак — стан)</p>
+                        <p>2. <strong>is tasting</strong> (куштувати — активна дія зараз)</p>
+                        <p>3. <strong>think</strong> (мати думку — стан)</p>
+                        <p>4. <strong>am thinking</strong> (обдумувати — процес)</p>
+                    </div>
+                </details>
+
+                <!-- Key 11 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-red-500 group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №11 — Problem Situation: Social Media Post Editor</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 border-t pt-3 space-y-2">
+                        <p><strong>Відредагований допис:</strong></p>
+                        <p class="italic bg-slate-50 p-2 rounded">"Hello everyone! I <strong>am writing</strong> this post from our biology room right now. Every Thursday, we <strong>study</strong> plants, but today we <strong>are studying</strong> sea creatures under the microscope! I <strong>love</strong> biology lessons because they are always interesting."</p>
+                    </div>
+                </details>
+
+                <!-- Key 12 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-red-500 group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №12 — Life Context: Photo Description</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 border-t pt-3 space-y-2">
+                        <p><strong>Орієнтовна відповідь:</strong> On weekends, my family usually goes to the park. But today in this photo, we are having a picnic near the lake. My dad is grilling sausages, and my sister is playing with our dog.</p>
+                        <p class="text-xs bg-slate-50 p-2 rounded"><strong>Критерії оцінювання:</strong> Правильне вживання Present Simple для рутини (2 бали), Present Continuous для подій на фото (2 бали), зв'язність тексту (1 бал).</p>
+                    </div>
+                </details>
+
+                <!-- Key 13 -->
+                <details class="bg-white rounded-2xl p-4 shadow border-l-4 border-emerald-500 group">
+                    <summary class="font-bold text-slate-800 cursor-pointer flex justify-between items-center">
+                        <span>Завдання №13 — Self-Reflection</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 group-open:rotate-180 transition"></i>
+                    </summary>
+                    <div class="mt-4 text-sm text-slate-700 border-t pt-3">
+                        <p>Завдання розраховане на самооцінювання учня. Вчитель аналізує фідбек для коригування подальшої роботи.</p>
+                    </div>
+                </details>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Interactive Logic Script -->
+    <script>
+        // Tab switching logic
+        function switchTab(tab) {
+            const studentTab = document.getElementById('tab-student');
+            const teacherTab = document.getElementById('tab-teacher');
+            const btnStudent = document.getElementById('btn-student');
+            const btnTeacher = document.getElementById('btn-teacher');
+
+            if (tab === 'student') {
+                studentTab.classList.remove('hidden');
+                teacherTab.classList.add('hidden');
+                
+                btnStudent.className = 'tab-btn px-4 py-2 rounded-xl bg-brand-green text-white shadow hover:bg-brand-greenDark transition flex items-center space-x-2';
+                btnTeacher.className = 'tab-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center space-x-2';
+            } else {
+                studentTab.classList.add('hidden');
+                teacherTab.classList.remove('hidden');
+                
+                btnTeacher.className = 'tab-btn px-4 py-2 rounded-xl bg-brand-orange text-white shadow hover:bg-brand-orangeDark transition flex items-center space-x-2';
+                btnStudent.className = 'tab-btn px-4 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition flex items-center space-x-2';
+            }
+        }
+
+        // Interactive Word Sorting for Task 1
+        function moveWord(element, targetColumn) {
+            const destContainer = targetColumn === 'simple' 
+                ? document.getElementById('col-simple') 
+                : document.getElementById('col-continuous');
+            
+            // Toggle highlight style
+            element.className = "cursor-pointer bg-slate-800 text-white px-3 py-1 rounded-lg text-sm font-semibold shadow-sm hover:opacity-80 transition";
+            
+            destContainer.appendChild(element);
+        }
+    </script>
+</body>
+</html>
