@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Робочий зошит · Present Simple / Continuous · 6 клас (інтерактивний)</title>
+<style>
+  :root {
+    --green: #2E7D32;
+    --green-light: #66BB6A;
+    --green-pale: #E8F5E9;
+    --orange: #F57C00;
+    --orange-light: #FFB74D;
+    --orange-pale: #FFF3E0;
+    --bg: #FAFAFA;
+    --text: #212121;
+    --muted: #616161;
+    --border: #E0E0E0;
+    --success: #2E7D32;
+    --error: #C62828;
+    --radius: 14px;
+    --shadow: 0 4px 14px rgba(0,0,0,0.07);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    font-size: 17px;
+  }
+  .page { max-width: 860px; margin: 0 auto; padding: 20px 18px 80px; }
+
+  .hero {
+    background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 50%, #F57C00 100%);
+    color: white;
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero h1 { font-size: 1.6rem; margin-bottom: 6px; }
+  .hero .sub { opacity: 0.95; font-size: 1rem; }
+  .hero .badge-row { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .hero .tag {
+    background: rgba(255,255,255,0.22);
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .deco { position: absolute; font-size: 4rem; opacity: 0.15; right: 20px; top: 10px; }
+
+  .lvl {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 99px;
+    margin-left: 6px;
+  }
+  .lvl-g { background: #C8E6C9; color: #1B5E20; }
+  .lvl-y { background: #FFE0B2; color: #E65100; }
+  .lvl-r { background: #FFCDD2; color: #B71C1C; }
+
+  .theory {
+    background: white;
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border-left: 6px solid var(--green);
+  }
+  .theory h2 { color: #1B5E20; margin-bottom: 10px; font-size: 1.2rem; }
+  .theory-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  @media (max-width: 600px) { .theory-grid { grid-template-columns: 1fr; } }
+  .t-card { background: var(--green-pale); border-radius: 10px; padding: 12px; }
+  .t-card.orange { background: var(--orange-pale); }
+  .t-card h3 { font-size: 1rem; margin-bottom: 6px; color: var(--green); }
+  .t-card.orange h3 { color: var(--orange); }
+  .t-card ul { padding-left: 18px; font-size: 0.92rem; }
+  .t-card li { margin: 3px 0; }
+
+  .ex {
+    background: white;
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--green-light);
+  }
+  .ex.mid { border-top-color: var(--orange-light); }
+  .ex.hard { border-top-color: #EF5350; }
+  .ex-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .ex-icon { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
+  .ex-title { font-size: 1.12rem; color: #1B5E20; font-weight: 700; }
+  .ex-instr {
+    background: #F5F5F5;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.92rem;
+    margin-bottom: 12px;
+    color: #424242;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 9px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  .btn-check { background: var(--green); color: white; }
+  .btn-check:hover { background: #1B5E20; }
+  .btn-reset { background: white; border: 2px solid var(--border); color: var(--muted); }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+
+  .feedback {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    display: none;
+    font-size: 0.9rem;
+  }
+  .feedback.ok { background: #E8F5E9; color: var(--success); display: block; }
+  .feedback.bad { background: #FFEBEE; color: var(--error); display: block; }
+  .feedback.partial { background: #FFF8E1; color: #F57F17; display: block; }
+
+  .chip {
+    display: inline-block;
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.15s;
+  }
+  .chip:hover { border-color: var(--orange); }
+  .chip.selected { border-color: var(--orange); background: var(--orange-pale); }
+  .chip.used { opacity: 0.35; pointer-events: none; }
+  .chip.in-simple { background: var(--green-pale); border-color: var(--green); }
+  .chip.in-cont { background: var(--orange-pale); border-color: var(--orange); }
+
+  .drop-zone {
+    min-height: 56px;
+    border: 2px dashed #BDBDBD;
+    border-radius: 10px;
+    padding: 8px;
+    margin-top: 6px;
+    background: #FAFAFA;
+  }
+  .drop-zone.simple { background: var(--green-pale); border-color: var(--green-light); }
+  .drop-zone.cont { background: var(--orange-pale); border-color: var(--orange-light); }
+
+  .tf-btn {
+    padding: 8px 18px;
+    margin: 4px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  .tf-btn.sel-yes { border-color: var(--success); background: #E8F5E9; }
+  .tf-btn.sel-no { border-color: var(--error); background: #FFEBEE; }
+
+  .gap {
+    border: none;
+    border-bottom: 2px solid var(--orange);
+    background: #FFF8E1;
+    padding: 3px 8px;
+    font-size: 1rem;
+    min-width: 110px;
+    text-align: center;
+    border-radius: 4px;
+  }
+  .gap.long { min-width: 180px; text-align: left; }
+
+  .mc {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 12px;
+    margin: 5px 0;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .mc.selected { border-color: var(--orange); background: var(--orange-pale); }
+  .mc.correct { border-color: var(--success); background: #E8F5E9; }
+  .mc.wrong { border-color: var(--error); background: #FFEBEE; }
+
+  .odd-item {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 4px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    background: white;
+    font-size: 0.92rem;
+  }
+  .odd-item.selected { border-color: var(--orange); background: var(--orange-pale); }
+  .odd-item.right { border-color: var(--success); background: #E8F5E9; }
+  .odd-item.wrong { border-color: var(--error); background: #FFEBEE; }
+
+  .pic-row { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0; }
+  .pic-card {
+    flex: 1 1 150px;
+    background: var(--orange-pale);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  .pic-card .emoji { font-size: 2.2rem; display: block; margin-bottom: 4px; }
+  .pic-card select {
+    margin-top: 8px;
+    padding: 6px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    font-size: 0.88rem;
+    width: 100%;
+  }
+
+  table.wb { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.92rem; }
+  table.wb th, table.wb td { border: 1.5px solid #C8E6C9; padding: 8px; text-align: left; }
+  table.wb th { background: var(--green-pale); }
+  table.wb input.gap { min-width: 90px; width: 95%; }
+
+  .match-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin: 8px 0;
+    font-size: 0.92rem;
+  }
+  .match-row select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  textarea.open {
+    width: 100%;
+    min-height: 90px;
+    padding: 10px;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    resize: vertical;
+  }
+
+  .score-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: white;
+    border-top: 2px solid var(--green-light);
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+    box-shadow: 0 -3px 12px rgba(0,0,0,0.08);
+    flex-wrap: wrap;
+  }
+  .score-bar .btn { margin: 0; }
+
+  .note { font-size: 0.85rem; color: var(--muted); margin-top: 6px; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="deco">📝</div>
+    <h1>Робочий зошит учня (інтерактивний)</h1>
+    <div class="sub">Англійська мова · 6 клас</div>
+    <div class="sub" style="margin-top:4px;font-size:1.15rem;font-weight:600">Present Simple or Present Continuous?</div>
+    <div class="badge-row">
+      <span class="tag">12 завдань</span>
+      <span class="tag">🟢 🟡 🔴</span>
+      <span class="tag">Клікай і перевіряй</span>
+    </div>
+  </div>
+
+  <div class="theory">
+    <h2>📌 Швидке нагадування</h2>
+    <div class="theory-grid">
+      <div class="t-card">
+        <h3>Present Simple</h3>
+        <ul>
+          <li>звички, факти, розклади</li>
+          <li>I/you/we/they + V</li>
+          <li>he/she/it + V<strong>s</strong>/V<strong>es</strong></li>
+          <li>always, usually, every day…</li>
+        </ul>
+      </div>
+      <div class="t-card orange">
+        <h3>Present Continuous</h3>
+        <ul>
+          <li>дія зараз / тимчасова</li>
+          <li>am / is / are + V<strong>ing</strong></li>
+          <li>now, at the moment, Look!</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note" style="margin-top:10px">⚠️ Рідко в Continuous: like, love, know, want, understand, believe, need.</p>
+  </div>
+
+  <!-- ========== 1 SORT ========== -->
+  <div class="ex" id="ex1">
+    <div class="ex-head">
+      <span class="ex-icon">🟢</span>
+      <div><div class="ex-title">1. Сигнали часу <span class="lvl lvl-g">Базовий</span></div></div>
+    </div>
+    <div class="ex-instr">Натисни на слово, потім на колонку, куди його покласти.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div>
+        <h4 style="text-align:center;color:var(--green)">Present Simple</h4>
+        <div class="drop-zone simple" id="zone-simple" onclick="dropTo('simple')"></div>
+      </div>
+      <div>
+        <h4 style="text-align:center;color:var(--orange)">Present Continuous</h4>
+        <div class="drop-zone cont" id="zone-cont" onclick="dropTo('cont')"></div>
+      </div>
+    </div>
+    <div id="chips1" style="margin-top:12px;text-align:center"></div>
+    <div class="btn-row">
+      <button class="btn btn-check" onclick="check1()">Перевірити</button>
+      <button class="btn btn-reset" onclick="reset1()">Скинути</button>
+    </div>
+    <div class="feedback" id="fb1"></div>
+  </div>
+
+  <!-- ========== 2 TRUE/FALSE ========== -->
+  <div class="ex" id="ex2">
+    <div class="ex-head">
+      <span class="ex-icon">🟢</span>
+      <div><div class="ex-title">2. Так чи ні? <span class="lvl lvl-g">Базовий</span></div></div>
+    </div>
+    <div class="ex-instr">Обери ✓ або ✗. Якщо ✗ — напиши виправлення.</div>
+    <div id="tfItems"></div>
+    <div class="btn-row"><button class="btn btn-check" onclick="check2()">Перевірити</button></div>
+    <div class="feedback" id="fb2"></div>
+  </div>
+
+  <!-- ========== 3 ODD ONE OUT ========== -->
+  <div class="ex" id="ex3">
+    <div class="ex-head">
+      <span class="ex-icon">🟢</span>
+      <div><div class="ex-title">3. Знайди зайве <span class="lvl lvl-g">Базовий</span></div></div>
+    </div>
+    <div class="ex-instr">Натисни на слово, яке НЕ підходить до групи.</div>
+    <div id="oddItems"></div>
+    <div class="btn-row"><button class="btn btn-check" onclick="check3()">Перевірити</button></div>
+    <div class="feedback" id="fb3"></div>
+  </div>
+
+  <!-- ========== 4 PICTURES ========== -->
+  <div class="ex" id="ex4">
+    <div class="ex-head">
+      <span class="ex-icon">🟢</span>
+      <div><div class="ex-title">4. Картки-ситуації <span class="lvl lvl-g">Базовий</span></div></div>
+    </div>
+    <div class="ex-instr">Обери час для кожної ситуації.</div>
+    <div class="pic-row" id="picItems"></div>
+    <div class="btn-row"><button class="btn btn-check" onclick="check4()">Перевірити</button></div>
+    <div class="feedback" id="fb4"></div>
+  </div>
+
+  <!-- ========== 5 TABLE ========== -->
+  <div class="ex mid" id="ex5">
+    <div class="ex-head">
+      <span class="ex-icon">🟡</span>
+      <div><div class="ex-title">5. Заповни таблицю <span class="lvl lvl-y">Середній</span></div></div>
+    </div>
+    <div class="ex-instr">Впиши форми для he/she.</div>
+    <table class="wb">
+      <tr><th>Base</th><th>Present Simple</th><th>Present Continuous</th></tr>
+      <tr><td>play</td><td><input class="gap" id="t5-0a" data-a="plays"></td><td><input class="gap" id="t5-0b" data-a="is playing"></td></tr>
+      <tr><td>watch</td><td><input class="gap" id="t5-1a" data-a="watches"></td><td><input class="gap" id="t5-1b" data-a="is watching"></td></tr>
+      <tr><td>go</td><td><input class="gap" id="t5-2a" data-a="goes"></td><td><input class="gap" id="t5-2b" data-a="is going"></td></tr>
+      <tr><td>study</td><td><input class="gap" id="t5-3a" data-a="studies"></td><td><input class="gap" id="t5-3b" data-a="is studying"></td></tr>
+      <tr><td>write</td><td><input class="gap" id="t5-4a" data-a="writes"></td><td><input class="gap" id="t5-4b" data-a="is writing"></td></tr>
+      <tr><td>run</td><td><input class="gap" id="t5-5a" data-a="runs"></td><td><input class="gap" id="t5-5b" data-a="is running"></td></tr>
+    </table>
+    <div class="btn-row"><button class="btn btn-check" onclick="check5()">Перевірити</button></div>
+    <div class="feedback" id="fb5"></div>
+  </div>
+
+  <!-- ========== 6 MC ========== -->
+  <div class="ex mid" id="ex6">
+    <div class="ex-head">
+      <span class="ex-icon">🟡</span>
+      <div><div class="ex-title">6. Обери правильну форму <span class="lvl lvl-y">Середній</span></div></div>
+    </div>
+    <div class="ex-instr">Натисни правильний варіант.</div>
+    <div id="mc6"></div>
+    <div class="btn-row"><button class="btn btn-check" onclick="check6()">Перевірити</button></div>
+    <div class="feedback" id="fb6"></div>
+  </div>
+
+  <!-- ========== 7 GAPS ========== -->
+  <div class="ex mid" id="ex7">
+    <div class="ex-head">
+      <span class="ex-icon">🟡</span>
+      <div><div class="ex-title">7. Заповни пропуски <span class="lvl lvl-y">Середній</span></div></div>
+    </div>
+    <div class="ex-instr">Впиши правильну форму дієслова.</div>
+    <div id="gap7"></div>
+    <div class="btn-row"><button class="btn btn-check" onclick="check7()">Перевірити</button></div>
+    <div class="feedback" id="fb7"></div>
+  </div>
+
+  <!-- ========== 8 MATCH ========== -->
+  <div class="ex mid" id="ex8">
+    <div class="ex-head">
+      <span class="ex-icon">🟡</span>
+      <div><div class="ex-title">8. Відповідність <span class="lvl lvl-y">Середній</span></div></div>
+    </div>
+    <div class="ex-instr">Обери літеру закінчення для кожного початку.</div>
+    <div id="match8"></div>
+    <div class="btn-row"><button class="btn btn-check" onclick="check8()">Перевірити</button></div>
+    <div class="feedback" id="fb8"></div>
+  </div>
+
+  <!-- ========== 9 ERRORS ========== -->
+  <div class="ex hard" id="ex9">
+    <div class="ex-head">
+      <span class="ex-icon">🔴</span>
+      <div><div class="ex-title">9. Знайди і виправ помилки <span class="lvl lvl-r">Поглиблений</span></div></div>
+    </div>
+    <div class="ex-instr">Напиши правильний варіант речення.</div>
+    <div id="err9"></div>
+    <div class="btn-row"><button class="btn btn-check" onclick="check9()">Перевірити</button></div>
+    <div class="feedback" id="fb9"></div>
+  </div>
+
+  <!-- ========== 10 TEXT ========== -->
+  <div class="ex hard" id="ex10">
+    <div class="ex-head">
+      <span class="ex-icon">🔴</span>
+      <div><div class="ex-title">10. Два часи в одному тексті <span class="lvl lvl-r">Поглиблений</span></div></div>
+    </div>
+    <div class="ex-instr">Впиши форми дієслів.</div>
+    <div style="background:#F5F5F5;padding:14px;border-radius:10px;line-height:2">
+      Hi! My name is Lisa. I <input class="gap" id="tx-0" data-a="live"> (live) in Kyiv.
+      Every morning I <input class="gap" id="tx-1" data-a="get"> (get) up at 7 and
+      <input class="gap" id="tx-2" data-a="have"> (have) breakfast with my family.
+      But today is different! Right now I <input class="gap" id="tx-3" data-a="am sitting"> (sit) in a café and I
+      <input class="gap" id="tx-4" data-a="am writing"> (write) this message to you.
+      My friend Anna <input class="gap" id="tx-5" data-a="is waiting"> (wait) for me outside.
+      We usually <input class="gap" id="tx-6" data-a="walk"> (walk) in the park on Saturdays, but today we
+      <input class="gap" id="tx-7" data-a="are going"> (go) to the cinema.
+      I <input class="gap" id="tx-8" data-a="love"> (love) films!
+    </div>
+    <div class="btn-row"><button class="btn btn-check" onclick="check10()">Перевірити</button></div>
+    <div class="feedback" id="fb10"></div>
+  </div>
+
+  <!-- ========== 11 OPEN ========== -->
+  <div class="ex hard" id="ex11">
+    <div class="ex-head">
+      <span class="ex-icon">🔴</span>
+      <div><div class="ex-title">11. Життєва ситуація <span class="lvl lvl-r">Поглиблений</span></div></div>
+    </div>
+    <div class="ex-instr">Напиши 5–6 речень другу: що ти зазвичай робиш і що робиш зараз. Використай обидва часи.</div>
+    <textarea class="open" id="open11" placeholder="I usually... Right now I am..."></textarea>
+    <p class="note">Це творче завдання — покажи вчителю або перевір сам: чи є Present Simple і Present Continuous?</p>
+  </div>
+
+  <!-- ========== 12 DIALOGUE + REFLECTION ========== -->
+  <div class="ex hard" id="ex12">
+    <div class="ex-head">
+      <span class="ex-icon">🔴</span>
+      <div><div class="ex-title">12. Творче + мініпідсумок <span class="lvl lvl-r">Поглиблений</span></div></div>
+    </div>
+    <div class="ex-instr"><strong>А.</strong> Напиши короткий діалог (4–6 реплік) з обома часами.</div>
+    <textarea class="open" id="open12a" placeholder="A: What are you doing now?&#10;B: ..."></textarea>
+    <div class="ex-instr" style="margin-top:12px"><strong>Б.</strong> Закінчи речення:</div>
+    <p style="margin:6px 0">1. Present Simple я використовую, коли</p>
+    <input class="gap long" id="ref1" style="width:100%;text-align:left">
+    <p style="margin:10px 0 6px">2. Present Continuous я використовую, коли</p>
+    <input class="gap long" id="ref2" style="width:100%;text-align:left">
+    <p style="margin:10px 0 6px">3. Найскладніше для мене в цій темі —</p>
+    <input class="gap long" id="ref3" style="width:100%;text-align:left">
+  </div>
+
+  <div style="text-align:center;margin:24px 0;color:var(--muted);font-size:0.9rem">
+    Натисни «Підрахувати бал» внизу, щоб побачити результат за вправи з автоперевіркою (1–10).
+  </div>
+</div>
+
+<div class="score-bar">
+  <div>
+    <strong>Бал:</strong> <span id="scoreText">— / 50</span>
+    &nbsp; <span id="pctText"></span>
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn btn-check" onclick="calcScore()">Підрахувати бал</button>
+    <button class="btn btn-reset" onclick="if(confirm('Почати заново?'))location.reload()">Почати заново</button>
+  </div>
+</div>
+
+<script>
+/* ========== DATA ========== */
+const data = {
+  signals: {
+    simple: ["always", "every morning", "usually", "on Sundays", "never"],
+    cont: ["now", "at the moment", "Look!", "today", "right now"]
+  },
+  tf: [
+    { q: "We use Present Simple for actions happening at the moment of speaking.", ok: false, fix: "Present Continuous" },
+    { q: "She always gets up at 7 o’clock.", ok: true },
+    { q: "Look! The baby sleeps.", ok: false, fix: "is sleeping" },
+    { q: "I am knowing the answer.", ok: false, fix: "I know" }
+  ],
+  odd: [
+    { items: ["always", "usually", "now", "every day"], ans: "now" },
+    { items: ["is playing", "plays", "are watching", "am reading"], ans: "plays" },
+    { items: ["at the moment", "right now", "on Mondays", "today"], ans: "on Mondays" },
+    { items: ["know", "want", "run", "like"], ans: "run" }
+  ],
+  pics: [
+    { emoji: "⏰🍳", text: "Every day at 8 a.m. mum makes breakfast.", ans: "PS" },
+    { emoji: "📱😮", text: "Look! Tom is talking on the phone now.", ans: "PC" },
+    { emoji: "🌧️🏠", text: "It often rains in autumn.", ans: "PS" },
+    { emoji: "📚✏️", text: "The students are writing a test at the moment.", ans: "PC" }
+  ],
+  mc6: [
+    { q: "She usually _____ to school.", opts: ["walks", "is walking"], ans: 0 },
+    { q: "Quiet! The baby _____.", opts: ["sleeps", "is sleeping"], ans: 1 },
+    { q: "We _____ TV every evening — only on Fridays.", opts: ["don’t watch", "aren’t watching"], ans: 0 },
+    { q: "Listen! Somebody _____ at the door.", opts: ["knocks", "is knocking"], ans: 1 },
+    { q: "My dad _____ in a bank. He likes his job.", opts: ["works", "is working"], ans: 0 },
+    { q: "Where is Anna? — She _____ her homework.", opts: ["does", "is doing"], ans: 1 }
+  ],
+  gaps7: [
+    { q: "Look! The children _____ (play) football in the park.", a: "are playing" },
+    { q: "My brother _____ (not / like) vegetables.", a: "doesn't like" },
+    { q: "_____ you usually _____ (get) up early?", a: "Do get" },
+    { q: "Be careful! The water _____ (boil).", a: "is boiling" },
+    { q: "We _____ (have) English on Tuesdays and Thursdays.", a: "have" },
+    { q: "What _____ she _____ (do) at the moment?", a: "is doing" }
+  ],
+  match8: {
+    starts: [
+      "She never …",
+      "Listen! The birds …",
+      "Water …",
+      "Where is Dad? He …",
+      "We usually …",
+      "Look at those clouds! It …"
+    ],
+    ends: [
+      "is cooking dinner in the kitchen.",
+      "boils at 100°C.",
+      "eats fast food.",
+      "are singing in the garden.",
+      "is going to rain.",
+      "walk to school together."
+    ],
+    ans: [2, 3, 1, 0, 5, 4] // index of end for each start
+  },
+  err9: [
+    { wrong: "She don’t like pizza.", a: ["she doesn't like pizza", "she does not like pizza"] },
+    { wrong: "Look! He run to the bus stop.", a: ["he is running to the bus stop", "look! he is running to the bus stop"] },
+    { wrong: "I am understand the rule now.", a: ["i understand the rule now", "i understand the rule"] },
+    { wrong: "They is watching a film at the moment.", a: ["they are watching a film at the moment"] },
+    { wrong: "Does she usually going to the gym?", a: ["does she usually go to the gym"] }
+  ]
+};
+
+/* ========== STATE ========== */
+let selectedChip = null;
+const placed = {}; // word -> 'simple'|'cont'
+const scores = { e1:0, e2:0, e3:0, e4:0, e5:0, e6:0, e7:0, e8:0, e9:0, e10:0 };
+
+/* ========== BUILD ========== */
+function init() {
+  // chips
+  const all = [...data.signals.simple, ...data.signals.cont];
+  shuffle(all);
+  const box = document.getElementById("chips1");
+  all.forEach(w => {
+    const el = document.createElement("span");
+    el.className = "chip";
+    el.textContent = w;
+    el.dataset.word = w;
+    el.onclick = () => selectChip(el);
+    box.appendChild(el);
+  });
+
+  // TF
+  const tfBox = document.getElementById("tfItems");
+  data.tf.forEach((item, i) => {
+    tfBox.innerHTML += `
+      <div style="margin:12px 0;padding:10px;background:#FAFAFA;border-radius:8px">
+        <p><strong>${i+1}.</strong> ${item.q}</p>
+        <button class="tf-btn" data-i="${i}" data-v="yes" onclick="selTF(this)">✓ Так</button>
+        <button class="tf-btn" data-i="${i}" data-v="no" onclick="selTF(this)">✗ Ні</button>
+        <div style="margin-top:6px" id="fix-wrap-${i}" class="hidden">
+          Виправлення: <input class="gap long" id="fix-${i}" placeholder="правильний варіант">
+        </div>
+      </div>`;
+  });
+
+  // Odd
+  const oddBox = document.getElementById("oddItems");
+  data.odd.forEach((row, ri) => {
+    let html = `<div style="margin:10px 0"><strong>${ri+1}.</strong> `;
+    row.items.forEach(it => {
+      html += `<span class="odd-item" data-r="${ri}" data-w="${it}" onclick="selOdd(this)">${it}</span>`;
+    });
+    html += `</div>`;
+    oddBox.innerHTML += html;
+  });
+
+  // Pics
+  const picBox = document.getElementById("picItems");
+  data.pics.forEach((p, i) => {
+    picBox.innerHTML += `
+      <div class="pic-card">
+        <span class="emoji">${p.emoji}</span>
+        ${p.text}
+        <select id="pic-${i}">
+          <option value="">— обери —</option>
+          <option value="PS">Present Simple</option>
+          <option value="PC">Present Continuous</option>
+        </select>
+      </div>`;
+  });
+
+  // MC6
+  const mcBox = document.getElementById("mc6");
+  data.mc6.forEach((item, i) => {
+    let opts = item.opts.map((o, oi) =>
+      `<button class="mc" data-ex="6" data-i="${i}" data-oi="${oi}" onclick="selMC(this)">${o}</button>`
+    ).join("");
+    mcBox.innerHTML += `<div style="margin:12px 0"><strong>${i+1}.</strong> ${item.q}<br>${opts}</div>`;
+  });
+
+  // Gaps7
+  const g7 = document.getElementById("gap7");
+  data.gaps7.forEach((item, i) => {
+    g7.innerHTML += `<div style="margin:10px 0">
+      <strong>${i+1}.</strong> ${item.q.replace("_____", `<input class="gap" id="g7-${i}" data-a="${item.a}">`)}
+    </div>`;
+  });
+
+  // Match8
+  const m8 = document.getElementById("match8");
+  data.match8.starts.forEach((s, i) => {
+    let opts = data.match8.ends.map((e, ei) =>
+      `<option value="${ei}">${String.fromCharCode(65+ei)}. ${e}</option>`
+    ).join("");
+    m8.innerHTML += `<div class="match-row">
+      <strong>${i+1}.</strong> ${s}
+      <select id="m8-${i}"><option value="">—</option>${opts}</select>
+    </div>`;
+  });
+
+  // Err9
+  const e9 = document.getElementById("err9");
+  data.err9.forEach((item, i) => {
+    e9.innerHTML += `<div style="margin:12px 0">
+      <p><strong>${i+1}.</strong> <em>${item.wrong}</em></p>
+      Правильно: <input class="gap long" id="e9-${i}" style="width:90%">
+    </div>`;
+  });
+}
+
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+}
+
+/* ========== EX1 SORT ========== */
+function selectChip(el) {
+  if (el.classList.contains("used")) return;
+  document.querySelectorAll("#chips1 .chip").forEach(c => c.classList.remove("selected"));
+  el.classList.add("selected");
+  selectedChip = el;
+}
+function dropTo(zone) {
+  if (!selectedChip) return;
+  const word = selectedChip.dataset.word;
+  placed[word] = zone;
+  selectedChip.classList.add("used");
+  selectedChip.classList.remove("selected");
+  const chip = document.createElement("span");
+  chip.className = "chip " + (zone === "simple" ? "in-simple" : "in-cont");
+  chip.textContent = word;
+  chip.onclick = () => {
+    // return to pool
+    delete placed[word];
+    chip.remove();
+    selectedChip.classList.remove("used");
+  };
+  document.getElementById(zone === "simple" ? "zone-simple" : "zone-cont").appendChild(chip);
+  selectedChip = null;
+}
+function check1() {
+  let ok = 0;
+  const all = [...data.signals.simple, ...data.signals.cont];
+  all.forEach(w => {
+    const z = placed[w];
+    if (data.signals.simple.includes(w) && z === "simple") ok++;
+    if (data.signals.cont.includes(w) && z === "cont") ok++;
+  });
+  scores.e1 = ok;
+  const fb = document.getElementById("fb1");
+  if (ok === 10) { fb.className = "feedback ok"; fb.textContent = "✓ Відмінно! 10/10"; }
+  else { fb.className = "feedback partial"; fb.textContent = `Правильно: ${ok}/10. Скинь і спробуй ще.`; }
+}
+function reset1() {
+  placed = {};
+  selectedChip = null;
+  document.getElementById("zone-simple").innerHTML = "";
+  document.getElementById("zone-cont").innerHTML = "";
+  document.querySelectorAll("#chips1 .chip").forEach(c => {
+    c.classList.remove("used", "selected");
+  });
+  document.getElementById("fb1").style.display = "none";
+  scores.e1 = 0;
+}
+
+/* ========== EX2 TF ========== */
+function selTF(btn) {
+  const i = btn.dataset.i;
+  btn.parentElement.querySelectorAll(".tf-btn").forEach(b => b.classList.remove("sel-yes", "sel-no"));
+  btn.classList.add(btn.dataset.v === "yes" ? "sel-yes" : "sel-no");
+  const wrap = document.getElementById("fix-wrap-" + i);
+  if (btn.dataset.v === "no") wrap.classList.remove("hidden");
+  else wrap.classList.add("hidden");
+}
+function check2() {
+  let ok = 0;
+  data.tf.forEach((item, i) => {
+    const yes = document.querySelector(`.tf-btn[data-i="${i}"].sel-yes`);
+    const no = document.querySelector(`.tf-btn[data-i="${i}"].sel-no`);
+    if (item.ok && yes) ok++;
+    if (!item.ok && no) ok++;
+  });
+  scores.e2 = ok;
+  const fb = document.getElementById("fb2");
+  if (ok === 4) { fb.className = "feedback ok"; fb.textContent = "✓ Супер! 4/4"; }
+  else { fb.className = "feedback partial"; fb.textContent = `Правильно: ${ok}/4`; }
+}
+
+/* ========== EX3 ODD ========== */
+const oddSel = {};
+function selOdd(el) {
+  const r = el.dataset.r;
+  document.querySelectorAll(`.odd-item[data-r="${r}"]`).forEach(e => e.classList.remove("selected"));
+  el.classList.add("selected");
+  oddSel[r] = el.dataset.w;
+}
+function check3() {
+  let ok = 0;
+  data.odd.forEach((row, ri) => {
+    const el = document.querySelector(`.odd-item[data-r="${ri}"].selected`);
+    if (el) {
+      if (el.dataset.w === row.ans) {
+        el.classList.add("right");
+        ok++;
+      } else {
+        el.classList.add("wrong");
+      }
+    }
+  });
+  scores.e3 = ok;
+  const fb = document.getElementById("fb3");
+  if (ok === 4) { fb.className = "feedback ok"; fb.textContent = "✓ Відмінно! 4/4"; }
+  else { fb.className = "feedback partial"; fb.textContent = `Правильно: ${ok}/4`; }
+}
+
+/* ========== EX4 PICS ========== */
+function check4() {
+  let ok = 0;
+  data.pics.forEach((p, i) => {
+    const v = document.getElementById("pic-" + i).value;
+    if (v === p.ans) ok++;
+  });
+  scores.e4 = ok;
+  const fb = document.getElementById("fb4");
+  if (ok === 4) { fb.className = "feedback ok"; fb.textContent = "✓ Чудово! 4/4"; }
+  else { fb.className = "feedback partial"; fb.textContent = `Правильно: ${ok}/4`; }
+}
+
+/* ========== EX5 TABLE ========== */
+function check5() {
+  let ok = 0;
+  for (let i = 0; i < 6; i++) {
+    const a = norm(document.getElementById("t5-" + i + "a").value);
+    const b = norm(document.getElementById("t5-" + i + "b").value);
+    const ca = document.getElementById("t5-" + i + "a").dataset.a;
+    const cb = document.getElementById("t5-" + i + "b").dataset.a;
+    if (a === ca) ok++;
+    if (b === cb) ok++;
+  }
+  scores.e5 = ok;
+  const fb = document.getElementById("fb5");
+  if (ok === 12) { fb.className = "feedback ok"; fb.textContent = "✓ Ідеально! 12/12"; }
+  else { fb.className = "feedback partial"; fb.textContent = `Правильно: ${ok}/12`; }
+}
+
+/* ========== EX6 MC ========== */
+function selMC(btn) {
+  const i = btn.dataset.i;
+  const ex = btn.dataset.ex;
+  document.querySelectorAll(`.mc[data-ex="${ex}"][data-i="${i}"]`).forEach(b => b.classList.remove("selected"));
+  btn.classList.add("selected");
+}
+function check6() {
+  let ok = 0;
+  data.mc6.forEach((item, i) => {
+    const sel = document.querySelector(`.mc[data-ex="6"][data-i="${i}"].selected`);
+    if (sel && +sel.dataset.oi === item.ans) {
+      sel.classList.add("correct");
+      ok++;
+    } else if (sel) {
+      sel.classList.add("wrong");
+    }
+  });
+  scores.e6 = ok;
+  const fb = document.getElementById("fb6");
+  if (ok === 6) { fb.className = "feedback ok"; fb.textContent = "✓ Супер! 6/6"; }
+  else { fb.className = "feedback partial"; fb.textContent = `Правильно: ${ok}/6`; }
+}
+
+/* ========== EX7 GAPS ========== */
+function norm(s) {
+  return (s || "").trim().toLowerCase().replace(/\s+/g, " ").replace(/[’']/g, "'");
+}
+function check7() {
+  let ok = 0;
+  data.gaps7.forEach((item, i) => {
+    const user = norm(document.getElementById("g7-" + i).value);
+    const ans = norm(item.a);
+    // special for "Do get"
+    if (i === 2) {
+      if (user === "do get" || user === "do you get") ok++;
+    } else if (i === 5) {
+      if (user === "is doing" || user === "is she doing") ok++;
+    } else if (user === ans) ok++;
+  });
+  scores.e7 = ok;
+  const fb = document.getElementById("fb7");
+  if (ok === 6) { fb.className = "feedback ok"; fb.textContent = "✓ Відмінно! 6/6"; }
+  else { fb.className = "feedback partial"; fb.textContent = `Правильно: ${ok}/6`; }
+}
+
+/* ========== EX8 MATCH ========== */
+function check8() {
+  let ok = 0;
+  data.match8.ans.forEach((a, i) => {
+    const v = document.getElementById("m8-" + i).value;
+    if (v !== "" && +v === a) ok++;
+  });
+  scores.e8 = ok;
+  const fb = document.getElementById("fb8");
+  if (ok === 6) { fb.className = "feedback ok"; fb.textContent = "✓ Чудово! 6/6"; }
+  else { fb.className = "feedback partial"; fb.textContent = `Правильно: ${ok}/6`; }
+}
+
+/* ========== EX9 ERRORS ========== */
+function check9() {
+  let ok = 0;
+  data.err9.forEach((item, i) => {
+    const user = norm(document.getElementById("e9-" + i).value);
+    if (item.a.some(a => user === a || user.includes(a))) ok++;
+  });
+  scores.e9 = ok;
+  const fb = document.getElementById("fb9");
+  if (ok === 5) { fb.className = "feedback ok"; fb.textContent = "✓ Супер! 5/5"; }
+  else { fb.className = "feedback partial"; fb.textContent = `Правильно: ${ok}/5`; }
+}
+
+/* ========== EX10 TEXT ========== */
+function check10() {
+  let ok = 0;
+  const ans = ["live","get","have","am sitting","am writing","is waiting","walk","are going","love"];
+  for (let i = 0; i < 9; i++) {
+    const user = norm(document.getElementById("tx-" + i).value);
+    if (user === ans[i]) ok++;
+  }
+  scores.e10 = ok;
+  const fb = document.getElementById("fb10");
+  if (ok === 9) { fb.className = "feedback ok"; fb.textContent = "✓ Ідеально! 9/9"; }
+  else { fb.className = "feedback partial"; fb.textContent = `Правильно: ${ok}/9`; }
+}
+
+/* ========== TOTAL SCORE ========== */
+function calcScore() {
+  // refresh all auto scores if needed
+  const total = scores.e1 + scores.e2 + scores.e3 + scores.e4 + scores.e5 +
+                scores.e6 + scores.e7 + scores.e8 + scores.e9 + scores.e10;
+  const max = 10 + 4 + 4 + 4 + 12 + 6 + 6 + 6 + 5 + 9; // 66? wait recalculate
+  // e1=10, e2=4, e3=4, e4=4, e5=12, e6=6, e7=6, e8=6, e9=5, e10=9 → 66
+  const maxScore = 66;
+  const pct = Math.round((total / maxScore) * 100);
+  document.getElementById("scoreText").textContent = `${total} / ${maxScore}`;
+  document.getElementById("pctText").textContent = `(${pct}%)`;
+  alert(`Твій результат за вправи 1–10:\n${total} з ${maxScore} (${pct}%)\n\nЗавдання 11–12 — творчі, їх перевіряє вчитель.`);
+}
+
+init();
+</script>
+</body>
+</html>
