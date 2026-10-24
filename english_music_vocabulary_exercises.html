@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="uk" class="h-full bg-slate-50">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Англійська мова: Music Vocabulary (A1+)</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .tab-active {
+            border-bottom: 3px solid #6366f1;
+            color: #4f46e5;
+            font-weight: 700;
+        }
+        .card-flip {
+            perspective: 1000px;
+        }
+        .card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card-flip.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            backface-visibility: hidden;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="min-h-full flex flex-col text-slate-800">
+
+    <!-- Header Navigation -->
+    <header class="bg-indigo-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-6xl mx-mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white/10 p-2 rounded-xl backdrop-blur-md">
+                        <i class="fa-solid font-bold fa-music text-xl text-yellow-300"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold leading-tight">Music & Instruments</h1>
+                        <p class="text-xs text-indigo-200">Практичний курс англійської • Рівень А1+</p>
+                    </div>
+                </div>
+                <div class="hidden sm:flex items-center gap-2">
+                    <span class="bg-indigo-700 text-indigo-100 text-xs px-3 py-1.5 rounded-full font-medium border border-indigo-500/30">
+                        <i class="fa-solid fa-book-open mr-1"></i> 30 Нових слів
+                    </span>
+                    <span class="bg-emerald-500 text-white text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
+                        <i class="fa-solid fa-gamepad mr-1"></i> 5 Практичних вправ
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Navigation Tabs -->
+        <div class="flex border-b border-slate-200 mb-8 overflow-x-auto no-scrollbar scroll-smooth">
+            <button onclick="switchTab('tab-main')" id="btn-tab-main" class="tab-button tab-active whitespace-nowrap px-5 py-3 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-all">
+                <i class="fa-solid fa-star text-amber-500 mr-2"></i>Головна вправа (З підручника)
+            </button>
+            <button onclick="switchTab('tab-words')" id="btn-tab-words" class="tab-button whitespace-nowrap px-5 py-3 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-all">
+                <i class="fa-solid fa-layer-group text-indigo-500 mr-2"></i>Словник (30 слів)
+            </button>
+            <button onclick="switchTab('tab-ex1')" id="btn-tab-ex1" class="tab-button whitespace-nowrap px-5 py-3 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-all">
+                <i class="fa-solid fa-pen-to-square text-sky-500 mr-2"></i>Вправа 1: Заповнення
+            </button>
+            <button onclick="switchTab('tab-ex2')" id="btn-tab-ex2" class="tab-button whitespace-nowrap px-5 py-3 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-all">
+                <i class="fa-solid fa-puzzle-piece text-emerald-500 mr-2"></i>Вправа 2: Відповідності
+            </button>
+            <button onclick="switchTab('tab-ex3')" id="btn-tab-ex3" class="tab-button whitespace-nowrap px-5 py-3 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-all">
+                <i class="fa-solid fa-circle-check text-purple-500 mr-2"></i>Вправа 3: Правда/Хиба
+            </button>
+            <button onclick="switchTab('tab-ex4')" id="btn-tab-ex4" class="tab-button whitespace-nowrap px-5 py-3 text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-all">
+                <i class="fa-solid fa-language text-rose-500 mr-2"></i>Вправа 4: Переклад
+            </button>
+        </div>
+
+        <!-- TAB 1: MAIN EXERCISE FROM IMAGE -->
+        <div id="tab-main" class="tab-content block space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6">
+                    <div>
+                        <span class="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-lg mb-2">Завдання з картинки №5</span>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Choose the correct word to complete the sentences.</h2>
+                        <p class="text-sm text-slate-500 mt-1">Оберіть правильне слово з двох запропонованих для кожного речення.</p>
+                    </div>
+                    <button onclick="resetMainEx()" class="text-slate-400 hover:text-indigo-600 p-2 text-sm font-medium transition">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Скинути
+                    </button>
+                </div>
+
+                <form id="main-ex-form" class="space-y-6">
+                    <!-- Q1 -->
+                    <div class="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200/60 hover:border-indigo-200 transition">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-indigo-600 text-white font-bold text-sm w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5">1</span>
+                            <div class="flex-1 space-y-3">
+                                <p class="text-base sm:text-lg text-slate-800 font-medium leading-relaxed">
+                                    You usually need a lot of different instruments for 
+                                    <span class="inline-flex gap-2 my-1 mx-1 align-middle">
+                                        <button type="button" onclick="selectOption(1, 'classical music')" id="btn-1-classical" class="opt-btn-1 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">classical music</button>
+                                        <span class="text-slate-400 font-normal">/</span>
+                                        <button type="button" onclick="selectOption(1, 'pop')" id="btn-1-pop" class="opt-btn-1 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">pop</button>
+                                    </span>
+                                    and the pieces of music are often quite long.
+                                </p>
+                                <div id="feedback-1" class="hidden text-sm font-medium"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200/60 hover:border-indigo-200 transition">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-indigo-600 text-white font-bold text-sm w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5">2</span>
+                            <div class="flex-1 space-y-3">
+                                <p class="text-base sm:text-lg text-slate-800 font-medium leading-relaxed">
+                                    People sometimes use sticks when they play the 
+                                    <span class="inline-flex gap-2 my-1 mx-1 align-middle">
+                                        <button type="button" onclick="selectOption(2, 'keyboard')" id="btn-2-keyboard" class="opt-btn-2 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">keyboard</button>
+                                        <span class="text-slate-400 font-normal">/</span>
+                                        <button type="button" onclick="selectOption(2, 'drums')" id="btn-2-drums" class="opt-btn-2 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">drums</button>
+                                    </span>.
+                                </p>
+                                <div id="feedback-2" class="hidden text-sm font-medium"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200/60 hover:border-indigo-200 transition">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-indigo-600 text-white font-bold text-sm w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5">3</span>
+                            <div class="flex-1 space-y-3">
+                                <p class="text-base sm:text-lg text-slate-800 font-medium leading-relaxed">
+                                    There are different singers in 
+                                    <span class="inline-flex gap-2 my-1 mx-1 align-middle">
+                                        <button type="button" onclick="selectOption(3, 'jazz')" id="btn-3-jazz" class="opt-btn-3 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">jazz</button>
+                                        <span class="text-slate-400 font-normal">/</span>
+                                        <button type="button" onclick="selectOption(3, 'an opera')" id="btn-3-opera" class="opt-btn-3 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">an opera</button>
+                                    </span>. It's a bit like a play with music and singing.
+                                </p>
+                                <div id="feedback-3" class="hidden text-sm font-medium"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200/60 hover:border-indigo-200 transition">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-indigo-600 text-white font-bold text-sm w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5">4</span>
+                            <div class="flex-1 space-y-3">
+                                <p class="text-base sm:text-lg text-slate-800 font-medium leading-relaxed">
+                                    In 
+                                    <span class="inline-flex gap-2 my-1 mx-1 align-middle">
+                                        <button type="button" onclick="selectOption(4, 'rap')" id="btn-4-rap" class="opt-btn-4 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">rap</button>
+                                        <span class="text-slate-400 font-normal">/</span>
+                                        <button type="button" onclick="selectOption(4, 'rock')" id="btn-4-rock" class="opt-btn-4 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">rock</button>
+                                    </span>, the artists don't really sing the words; they speak them.
+                                </p>
+                                <div id="feedback-4" class="hidden text-sm font-medium"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200/60 hover:border-indigo-200 transition">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-indigo-600 text-white font-bold text-sm w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5">5</span>
+                            <div class="flex-1 space-y-3">
+                                <p class="text-base sm:text-lg text-slate-800 font-medium leading-relaxed">
+                                    You put the 
+                                    <span class="inline-flex gap-2 my-1 mx-1 align-middle">
+                                        <button type="button" onclick="selectOption(5, 'saxophone')" id="btn-5-saxophone" class="opt-btn-5 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">saxophone</button>
+                                        <span class="text-slate-400 font-normal">/</span>
+                                        <button type="button" onclick="selectOption(5, 'violin')" id="btn-5-violin" class="opt-btn-5 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">violin</button>
+                                    </span> to your mouth to play it.
+                                </p>
+                                <div id="feedback-5" class="hidden text-sm font-medium"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200/60 hover:border-indigo-200 transition">
+                        <div class="flex items-start gap-3">
+                            <span class="bg-indigo-600 text-white font-bold text-sm w-7 h-7 rounded-full flex items-center justify-center shrink-0 mt-0.5">6</span>
+                            <div class="flex-1 space-y-3">
+                                <p class="text-base sm:text-lg text-slate-800 font-medium leading-relaxed">
+                                    <span class="inline-flex gap-2 my-1 mx-1 align-middle">
+                                        <button type="button" onclick="selectOption(6, 'piano')" id="btn-6-piano" class="opt-btn-6 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">A piano</button>
+                                        <span class="text-slate-400 font-normal">/</span>
+                                        <button type="button" onclick="selectOption(6, 'electric guitar')" id="btn-6-electric guitar" class="opt-btn-6 border-2 border-slate-300 hover:border-indigo-500 px-3 py-1 rounded-lg text-sm font-semibold transition bg-white">An electric guitar</button>
+                                    </span> is quite easy to carry around.
+                                </p>
+                                <div id="feedback-6" class="hidden text-sm font-medium"></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <button onclick="checkMainEx()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg shadow-indigo-500/30 transition-all text-center">
+                        <i class="fa-solid fa-check-circle mr-2"></i>Перевірити відповіді
+                    </button>
+                    <div id="main-score" class="hidden text-base font-bold px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: VOCABULARY SECTION -->
+        <div id="tab-words" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6 mb-6">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900">30 Ключових слів та виразів (A1+)</h2>
+                        <p class="text-sm text-slate-500 mt-1">Натискайте на картку, щоб переглянути переклад, або на динамік для озвучення.</p>
+                    </div>
+                    <!-- View Toggle -->
+                    <div class="flex items-center bg-slate-100 p-1 rounded-xl shrink-0 w-fit">
+                        <button onclick="setVocabMode('cards')" id="mode-cards-btn" class="px-4 py-1.5 text-xs font-bold rounded-lg bg-white shadow-sm text-indigo-600">
+                            <i class="fa-solid fa-clone mr-1"></i> Картки
+                        </button>
+                        <button onclick="setVocabMode('list')" id="mode-list-btn" class="px-4 py-1.5 text-xs font-bold rounded-lg text-slate-600 hover:text-indigo-600">
+                            <i class="fa-solid fa-list mr-1"></i> Таблиця
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CARDS VIEW -->
+                <div id="vocab-cards-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <!-- Dynamic standard 30 words -->
+                </div>
+
+                <!-- LIST VIEW -->
+                <div id="vocab-list-container" class="hidden overflow-hidden rounded-xl border border-slate-200">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                <th class="p-3 sm:p-4">#</th>
+                                <th class="p-3 sm:p-4">Англійська</th>
+                                <th class="p-3 sm:p-4">Українська</th>
+                                <th class="p-3 sm:p-4 text-center">Озвучка</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vocab-table-body" class="divide-y divide-slate-100 text-sm">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: EXERCISE 1 (FILL IN BLANKS) -->
+        <div id="tab-ex1" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <span class="inline-block px-3 py-1 bg-sky-100 text-sky-800 text-xs font-bold rounded-lg mb-2">Вправа 1</span>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Fill in the Blanks</h2>
+                    <p class="text-sm text-slate-500 mt-1">Вставити правильні слова з наданого списку у пропуски.</p>
+                </div>
+
+                <!-- Word Bank -->
+                <div class="bg-sky-50 border border-sky-200 p-4 rounded-xl mb-6">
+                    <p class="text-xs font-bold text-sky-900 uppercase tracking-wide mb-2">Банк слів:</p>
+                    <div class="flex flex-wrap gap-2" id="ex1-bank">
+                        <span class="px-3 py-1 bg-white border border-sky-300 text-sky-800 rounded-lg text-sm font-semibold shadow-xs">classical music</span>
+                        <span class="px-3 py-1 bg-white border border-sky-300 text-sky-800 rounded-lg text-sm font-semibold shadow-xs">saxophone</span>
+                        <span class="px-3 py-1 bg-white border border-sky-300 text-sky-800 rounded-lg text-sm font-semibold shadow-xs">singers</span>
+                        <span class="px-3 py-1 bg-white border border-sky-300 text-sky-800 rounded-lg text-sm font-semibold shadow-xs">easy</span>
+                        <span class="px-3 py-1 bg-white border border-sky-300 text-sky-800 rounded-lg text-sm font-semibold shadow-xs">drums</span>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80">
+                        <p class="text-slate-800 font-medium">1. Mozart and Beethoven wrote famous <input type="text" id="ex1-q1" class="border border-slate-300 rounded-lg px-3 py-1 mx-1 font-semibold focus:outline-indigo-600 text-indigo-700 w-44" placeholder="...">.</p>
+                        <p id="ex1-fb1" class="hidden text-xs font-bold mt-1"></p>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80">
+                        <p class="text-slate-800 font-medium">2. A <input type="text" id="ex1-q2" class="border border-slate-300 rounded-lg px-3 py-1 mx-1 font-semibold focus:outline-indigo-600 text-indigo-700 w-36" placeholder="..."> is a instrument that you put to your mouth.</p>
+                        <p id="ex1-fb2" class="hidden text-xs font-bold mt-1"></p>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80">
+                        <p class="text-slate-800 font-medium">3. In an opera, the <input type="text" id="ex1-q3" class="border border-slate-300 rounded-lg px-3 py-1 mx-1 font-semibold focus:outline-indigo-600 text-indigo-700 w-32" placeholder="..."> have very strong and beautiful voices.</p>
+                        <p id="ex1-fb3" class="hidden text-xs font-bold mt-1"></p>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80">
+                        <p class="text-slate-800 font-medium">4. It is not heavy, so an electric guitar is quite <input type="text" id="ex1-q4" class="border border-slate-300 rounded-lg px-3 py-1 mx-1 font-semibold focus:outline-indigo-600 text-indigo-700 w-28" placeholder="..."> to carry around.</p>
+                        <p id="ex1-fb4" class="hidden text-xs font-bold mt-1"></p>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80">
+                        <p class="text-slate-800 font-medium">5. Rock bands have a drum kit, and the drummer hits the <input type="text" id="ex1-q5" class="border border-slate-300 rounded-lg px-3 py-1 mx-1 font-semibold focus:outline-indigo-600 text-indigo-700 w-32" placeholder="..."> with sticks.</p>
+                        <p id="ex1-fb5" class="hidden text-xs font-bold mt-1"></p>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <button onclick="checkEx1()" class="px-6 py-2.5 bg-sky-600 hover:bg-sky-700 text-white font-bold rounded-xl shadow-md transition">
+                        Перевірити Вправу 1
+                    </button>
+                    <span id="ex1-result" class="font-bold text-sm"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 4: EXERCISE 2 (MATCHING) -->
+        <div id="tab-ex2" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-lg mb-2">Вправа 2</span>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Matching Game</h2>
+                    <p class="text-sm text-slate-500 mt-1">Оберіть відповідне визначення для кожного музичного терміну.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="ex2-grid">
+                    <!-- Sentence Pair 1 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between">
+                        <div class="font-bold text-indigo-700 mb-2">1. Rap</div>
+                        <select id="ex2-m1" class="border border-slate-300 rounded-lg p-2 text-sm bg-white font-medium focus:outline-indigo-500">
+                            <option value="">-- Оберіть варіант --</option>
+                            <option value="A">A) You put it to your mouth and blow to play.</option>
+                            <option value="B">B) Artists don't really sing; they speak the words.</option>
+                            <option value="C">C) A play on stage with music and singing.</option>
+                            <option value="D">D) You hit them with sticks.</option>
+                            <option value="E">E) Easy to carry around compared to a heavy piano.</option>
+                        </select>
+                    </div>
+
+                    <!-- Sentence Pair 2 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between">
+                        <div class="font-bold text-indigo-700 mb-2">2. Opera</div>
+                        <select id="ex2-m2" class="border border-slate-300 rounded-lg p-2 text-sm bg-white font-medium focus:outline-indigo-500">
+                            <option value="">-- Оберіть варіант --</option>
+                            <option value="A">A) You put it to your mouth and blow to play.</option>
+                            <option value="B">B) Artists don't really sing; they speak the words.</option>
+                            <option value="C">C) A play on stage with music and singing.</option>
+                            <option value="D">D) You hit them with sticks.</option>
+                            <option value="E">E) Easy to carry around compared to a heavy piano.</option>
+                        </select>
+                    </div>
+
+                    <!-- Sentence Pair 3 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between">
+                        <div class="font-bold text-indigo-700 mb-2">3. Saxophone</div>
+                        <select id="ex2-m3" class="border border-slate-300 rounded-lg p-2 text-sm bg-white font-medium focus:outline-indigo-500">
+                            <option value="">-- Оберіть варіант --</option>
+                            <option value="A">A) You put it to your mouth and blow to play.</option>
+                            <option value="B">B) Artists don't really sing; they speak the words.</option>
+                            <option value="C">C) A play on stage with music and singing.</option>
+                            <option value="D">D) You hit them with sticks.</option>
+                            <option value="E">E) Easy to carry around compared to a heavy piano.</option>
+                        </select>
+                    </div>
+
+                    <!-- Sentence Pair 4 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between">
+                        <div class="font-bold text-indigo-700 mb-2">4. Drums</div>
+                        <select id="ex2-m4" class="border border-slate-300 rounded-lg p-2 text-sm bg-white font-medium focus:outline-indigo-500">
+                            <option value="">-- Оберіть варіант --</option>
+                            <option value="A">A) You put it to your mouth and blow to play.</option>
+                            <option value="B">B) Artists don't really sing; they speak the words.</option>
+                            <option value="C">C) A play on stage with music and singing.</option>
+                            <option value="D">D) You hit them with sticks.</option>
+                            <option value="E">E) Easy to carry around compared to a heavy piano.</option>
+                        </select>
+                    </div>
+
+                    <!-- Sentence Pair 5 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex flex-col justify-between md:col-span-2">
+                        <div class="font-bold text-indigo-700 mb-2">5. Electric guitar</div>
+                        <select id="ex2-m5" class="border border-slate-300 rounded-lg p-2 text-sm bg-white font-medium focus:outline-indigo-500">
+                            <option value="">-- Оберіть варіант --</option>
+                            <option value="A">A) You put it to your mouth and blow to play.</option>
+                            <option value="B">B) Artists don't really sing; they speak the words.</option>
+                            <option value="C">C) A play on stage with music and singing.</option>
+                            <option value="D">D) You hit them with sticks.</option>
+                            <option value="E">E) Easy to carry around compared to a heavy piano.</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <button onclick="checkEx2()" class="px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-md transition">
+                        Перевірити Вправу 2
+                    </button>
+                    <span id="ex2-result" class="font-bold text-sm"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 5: EXERCISE 3 (TRUE / FALSE) -->
+        <div id="tab-ex3" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <span class="inline-block px-3 py-1 bg-purple-100 text-purple-800 text-xs font-bold rounded-lg mb-2">Вправа 3</span>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">True or False?</h2>
+                    <p class="text-sm text-slate-500 mt-1">Визначте, чи твердження вірне (True) чи хибне (False).</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Q1 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <p class="font-semibold text-slate-800 text-base mb-3">1. You use sticks to play the piano.</p>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                <input type="radio" name="tf-1" value="True" class="w-4 h-4 text-purple-600"> True
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                <input type="radio" name="tf-1" value="False" class="w-4 h-4 text-purple-600"> False (drums)
+                            </label>
+                        </div>
+                        <div id="tf-fb-1" class="hidden text-xs font-bold mt-2"></div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <p class="font-semibold text-slate-800 text-base mb-3">2. In classical music, the pieces of music are often quite long and need many different instruments.</p>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                <input type="radio" name="tf-2" value="True" class="w-4 h-4 text-purple-600"> True
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                <input type="radio" name="tf-2" value="False" class="w-4 h-4 text-purple-600"> False
+                            </label>
+                        </div>
+                        <div id="tf-fb-2" class="hidden text-xs font-bold mt-2"></div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <p class="font-semibold text-slate-800 text-base mb-3">3. You put the violin to your mouth to play it.</p>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                <input type="radio" name="tf-3" value="True" class="w-4 h-4 text-purple-600"> True
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                <input type="radio" name="tf-3" value="False" class="w-4 h-4 text-purple-600"> False (saxophone)
+                            </label>
+                        </div>
+                        <div id="tf-fb-3" class="hidden text-xs font-bold mt-2"></div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <p class="font-semibold text-slate-800 text-base mb-3">4. A piano is very light and easy to carry around.</p>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                <input type="radio" name="tf-4" value="True" class="w-4 h-4 text-purple-600"> True
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer font-medium text-slate-700">
+                                <input type="radio" name="tf-4" value="False" class="w-4 h-4 text-purple-600"> False (electric guitar)
+                            </label>
+                        </div>
+                        <div id="tf-fb-4" class="hidden text-xs font-bold mt-2"></div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <button onclick="checkEx3()" class="px-6 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl shadow-md transition">
+                        Перевірити Вправу 3
+                    </button>
+                    <span id="ex3-result" class="font-bold text-sm"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 6: EXERCISE 4 (TRANSLATION) -->
+        <div id="tab-ex4" class="tab-content hidden space-y-6">
+            <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
+                <div class="border-b border-slate-100 pb-4 mb-6">
+                    <span class="inline-block px-3 py-1 bg-rose-100 text-rose-800 text-xs font-bold rounded-lg mb-2">Вправа 4</span>
+                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900">Translation Practice</h2>
+                    <p class="text-sm text-slate-500 mt-1">Перекладіть речення з української на англійську мову.</p>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- T1 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <p class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-1">Речення 1</p>
+                        <p class="text-slate-800 font-bold mb-3">Зазвичай для класичної музики потрібно багато різних інструментів.</p>
+                        <textarea id="tr-1" rows="2" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:outline-indigo-500 font-medium" placeholder="Введіть переклад англійською..."></textarea>
+                        <div id="tr-fb-1" class="hidden text-xs font-bold mt-2"></div>
+                    </div>
+
+                    <!-- T2 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <p class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-1">Речення 2</p>
+                        <p class="text-slate-800 font-bold mb-3">Люди іноді використовують палички, коли грають на барабанах.</p>
+                        <textarea id="tr-2" rows="2" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:outline-indigo-500 font-medium" placeholder="Введіть переклад англійською..."></textarea>
+                        <div id="tr-fb-2" class="hidden text-xs font-bold mt-2"></div>
+                    </div>
+
+                    <!-- T3 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <p class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-1">Речення 3</p>
+                        <p class="text-slate-800 font-bold mb-3">У репі артисти не співають слова, вони їх вимовляють (говорять).</p>
+                        <textarea id="tr-3" rows="2" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:outline-indigo-500 font-medium" placeholder="Введіть переклад англійською..."></textarea>
+                        <div id="tr-fb-3" class="hidden text-xs font-bold mt-2"></div>
+                    </div>
+
+                    <!-- T4 -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                        <p class="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-1">Речення 4</p>
+                        <p class="text-slate-800 font-bold mb-3">Електрогітару досить легко носити з собою.</p>
+                        <textarea id="tr-4" rows="2" class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:outline-indigo-500 font-medium" placeholder="Введіть переклад англійською..."></textarea>
+                        <div id="tr-fb-4" class="hidden text-xs font-bold mt-2"></div>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+                    <button onclick="checkEx4()" class="px-6 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl shadow-md transition">
+                        Перевірити Вправу 4
+                    </button>
+                    <span id="ex4-result" class="font-bold text-sm"></span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 py-6 text-center text-xs text-slate-500 mt-auto">
+        <p>Інтерактивна навчальна платформа з англійської мови • Рівень А1+</p>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script>
+        // 30 Vocabulary items
+        const vocabulary = [
+            { id: 1, en: "Instrument", ua: "Музичний інструмент" },
+            { id: 2, en: "Classical music", ua: "Класична музика" },
+            { id: 3, en: "Pop", ua: "Поп-музика" },
+            { id: 4, en: "Piece of music", ua: "Музичний твір / п'єса" },
+            { id: 5, en: "Quite long", ua: "Доволі довгий" },
+            { id: 6, en: "Stick", ua: "Паличка (барабанна)" },
+            { id: 7, en: "Keyboard", ua: "Клавішні / синтезатор" },
+            { id: 8, en: "Drums", ua: "Барабани" },
+            { id: 9, en: "Singer", ua: "Співак / співачка" },
+            { id: 10, en: "Jazz", ua: "Джаз" },
+            { id: 11, en: "Opera", ua: "Опера" },
+            { id: 12, en: "Play", ua: "П'єса (театральна)" },
+            { id: 13, en: "Singing", ua: "Спів" },
+            { id: 14, en: "Rap", ua: "Реп" },
+            { id: 15, en: "Rock", ua: "Рок" },
+            { id: 16, en: "Artist", ua: "Виконавець / артист" },
+            { id: 17, en: "Word", ua: "Слово" },
+            { id: 18, en: "Speak", ua: "Говорити / вимовляти" },
+            { id: 19, en: "Saxophone", ua: "Саксофон" },
+            { id: 20, en: "Mouth", ua: "Рот" },
+            { id: 21, en: "Violin", ua: "Скрипка" },
+            { id: 22, en: "Piano", ua: "Піаніно / фортепіано" },
+            { id: 23, en: "Electric guitar", ua: "Електрогітара" },
+            { id: 24, en: "Easy", ua: "Легкий / простий" },
+            { id: 25, en: "Carry around", ua: "Носити з собою" },
+            { id: 26, en: "Usually", ua: "Зазвичай" },
+            { id: 27, en: "Different", ua: "Різний" },
+            { id: 28, en: "Sometimes", ua: "Іноді" },
+            { id: 29, en: "Use", ua: "Використовувати" },
+            { id: 30, en: "Complete", ua: "Завершувати / доповнювати" }
+        ];
+
+        // State for main exercise answers
+        const userAnswers = {
+            1: null,
+            2: null,
+            3: null,
+            4: null,
+            5: null,
+            6: null
+        };
+
+        const correctAnswers = {
+            1: "classical music",
+            2: "drums",
+            3: "an opera",
+            4: "rap",
+            5: "saxophone",
+            6: "electric guitar"
+        };
+
+        // Render Vocabulary
+        function renderVocabulary() {
+            const cardsContainer = document.getElementById('vocab-cards-container');
+            const tableBody = document.getElementById('vocab-table-body');
+            
+            cardsContainer.innerHTML = '';
+            tableBody.innerHTML = '';
+
+            vocabulary.forEach(item => {
+                // Card View Element
+                const card = document.createElement('div');
+                card.className = "card-flip h-28 cursor-pointer";
+                card.onclick = function() { this.classList.toggle('flipped'); };
+                card.innerHTML = `
+                    <div class="card-inner relative w-full h-full shadow-xs rounded-xl border border-slate-200 bg-white">
+                        <div class="card-front absolute inset-0 flex flex-col items-center justify-center p-3 text-center bg-white rounded-xl">
+                            <span class="text-xs font-semibold text-indigo-500 mb-1">#${item.id}</span>
+                            <span class="text-base font-bold text-slate-800">${item.en}</span>
+                            <button onclick="event.stopPropagation(); speakWord('${item.en}')" class="mt-1 text-slate-400 hover:text-indigo-600 transition text-xs">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <div class="card-back absolute inset-0 flex items-center justify-center p-3 text-center bg-indigo-600 text-white rounded-xl font-bold text-sm">
+                            ${item.ua}
+                        </div>
+                    </div>
+                `;
+                cardsContainer.appendChild(card);
+
+                // Table View Row
+                const row = document.createElement('tr');
+                row.className = "hover:bg-slate-50 transition";
+                row.innerHTML = `
+                    <td class="p-3 sm:p-4 text-xs font-semibold text-slate-400">${item.id}</td>
+                    <td class="p-3 sm:p-4 font-bold text-slate-800">${item.en}</td>
+                    <td class="p-3 sm:p-4 text-slate-600 font-medium">${item.ua}</td>
+                    <td class="p-3 sm:p-4 text-center">
+                        <button onclick="speakWord('${item.en}')" class="text-indigo-600 hover:text-indigo-800 p-2 text-base">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Voice Synthesizer
+        function speakWord(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Vocab Display Mode
+        function setVocabMode(mode) {
+            const cardsView = document.getElementById('vocab-cards-container');
+            const listView = document.getElementById('vocab-list-container');
+            const cardsBtn = document.getElementById('mode-cards-btn');
+            const listBtn = document.getElementById('mode-list-btn');
+
+            if (mode === 'cards') {
+                cardsView.classList.remove('hidden');
+                listView.classList.add('hidden');
+                cardsBtn.className = "px-4 py-1.5 text-xs font-bold rounded-lg bg-white shadow-sm text-indigo-600";
+                listBtn.className = "px-4 py-1.5 text-xs font-bold rounded-lg text-slate-600 hover:text-indigo-600";
+            } else {
+                cardsView.classList.add('hidden');
+                listView.classList.remove('hidden');
+                listBtn.className = "px-4 py-1.5 text-xs font-bold rounded-lg bg-white shadow-sm text-indigo-600";
+                cardsBtn.className = "px-4 py-1.5 text-xs font-bold rounded-lg text-slate-600 hover:text-indigo-600";
+            }
+        }
+
+        // Tab Navigation
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-button').forEach(el => el.classList.remove('tab-active'));
+
+            document.getElementById(tabId).classList.remove('hidden');
+            document.getElementById('btn-' + tabId).classList.add('tab-active');
+        }
+
+        // Main Exercise Functions
+        function selectOption(questionNum, val) {
+            userAnswers[questionNum] = val;
+
+            // Reset buttons style for this question
+            const buttons = document.querySelectorAll(`.opt-btn-${questionNum}`);
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600');
+                btn.classList.add('bg-white', 'text-slate-800', 'border-slate-300');
+            });
+
+            // Highlight selected button
+            const selectedBtn = Array.from(buttons).find(b => b.innerText.toLowerCase().includes(val.toLowerCase()));
+            if (selectedBtn) {
+                selectedBtn.classList.remove('bg-white', 'border-slate-300');
+                selectedBtn.classList.add('bg-indigo-600', 'text-white', 'border-indigo-600');
+            }
+        }
+
+        function checkMainEx() {
+            let score = 0;
+            for (let i = 1; i <= 6; i++) {
+                const fb = document.getElementById(`feedback-${i}`);
+                fb.classList.remove('hidden', 'text-emerald-600', 'text-rose-600');
+
+                if (userAnswers[i] === correctAnswers[i]) {
+                    score++;
+                    fb.innerHTML = `<i class="fa-solid fa-circle-check"></i> Правильно!`;
+                    fb.classList.add('text-emerald-600');
+                } else {
+                    fb.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> Неправильно. Вірна відповідь: <strong>${correctAnswers[i]}</strong>`;
+                    fb.classList.add('text-rose-600');
+                }
+            }
+
+            const scoreEl = document.getElementById('main-score');
+            scoreEl.classList.remove('hidden');
+            scoreEl.innerText = `Ваш результат: ${score} з 6 балів!`;
+        }
+
+        function resetMainEx() {
+            for (let i = 1; i <= 6; i++) {
+                userAnswers[i] = null;
+                const fb = document.getElementById(`feedback-${i}`);
+                fb.classList.add('hidden');
+                
+                const buttons = document.querySelectorAll(`.opt-btn-${i}`);
+                buttons.forEach(btn => {
+                    btn.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600');
+                    btn.classList.add('bg-white', 'text-slate-800', 'border-slate-300');
+                });
+            }
+            document.getElementById('main-score').classList.add('hidden');
+        }
+
+        // Exercise 1 Logic
+        function checkEx1() {
+            const answers = {
+                1: ["classical music"],
+                2: ["saxophone"],
+                3: ["singers"],
+                4: ["easy"],
+                5: ["drums"]
+            };
+
+            let correctCount = 0;
+            for (let i = 1; i <= 5; i++) {
+                const input = document.getElementById(`ex1-q${i}`);
+                const val = input.value.trim().toLowerCase();
+                const fb = document.getElementById(`ex1-fb${i}`);
+                fb.classList.remove('hidden', 'text-emerald-600', 'text-rose-600');
+
+                if (answers[i].includes(val)) {
+                    correctCount++;
+                    fb.innerText = "Вірно!";
+                    fb.classList.add('text-emerald-600');
+                } else {
+                    fb.innerText = `Помилка. Вірно: ${answers[i][0]}`;
+                    fb.classList.add('text-rose-600');
+                }
+            }
+            document.getElementById('ex1-result').innerText = `Результат: ${correctCount}/5`;
+        }
+
+        // Exercise 2 Logic
+        function checkEx2() {
+            const correct = { m1: "B", m2: "C", m3: "A", m4: "D", m5: "E" };
+            let count = 0;
+
+            for (let i = 1; i <= 5; i++) {
+                const sel = document.getElementById(`ex2-m${i}`);
+                if (sel.value === correct[`m${i}`]) {
+                    count++;
+                    sel.classList.remove('border-slate-300', 'border-rose-500');
+                    sel.classList.add('border-emerald-500', 'bg-emerald-50');
+                } else {
+                    sel.classList.remove('border-slate-300', 'border-emerald-500');
+                    sel.classList.add('border-rose-500', 'bg-rose-50');
+                }
+            }
+            document.getElementById('ex2-result').innerText = `Результат: ${count}/5`;
+        }
+
+        // Exercise 3 Logic
+        function checkEx3() {
+            const correctTF = { 1: "False", 2: "True", 3: "False", 4: "False" };
+            let score = 0;
+
+            for (let i = 1; i <= 4; i++) {
+                const selected = document.querySelector(`input[name="tf-${i}"]:checked`);
+                const fb = document.getElementById(`tf-fb-${i}`);
+                fb.classList.remove('hidden', 'text-emerald-600', 'text-rose-600');
+
+                if (selected && selected.value === correctTF[i]) {
+                    score++;
+                    fb.innerText = "Правильно!";
+                    fb.classList.add('text-emerald-600');
+                } else {
+                    fb.innerText = `Невірно. Правильна відповідь: ${correctTF[i]}`;
+                    fb.classList.add('text-rose-600');
+                }
+            }
+            document.getElementById('ex3-result').innerText = `Результат: ${score}/4`;
+        }
+
+        // Exercise 4 Logic
+        function checkEx4() {
+            const keyAnswers = [
+                ["you usually need a lot of different instruments for classical music"],
+                ["people sometimes use sticks when they play the drums"],
+                ["in rap, the artists don't really sing the words; they speak them", "in rap the artists don't really sing the words, they speak them"],
+                ["an electric guitar is quite easy to carry around"]
+            ];
+
+            let score = 0;
+
+            for (let i = 1; i <= 4; i++) {
+                const text = document.getElementById(`tr-${i}`).value.trim().toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+                const fb = document.getElementById(`tr-fb-${i}`);
+                fb.classList.remove('hidden', 'text-emerald-600', 'text-rose-600');
+
+                // Check basic overlap or direct matching
+                const matches = keyAnswers[i-1].some(ans => text.includes(ans.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")));
+
+                if (matches) {
+                    score++;
+                    fb.innerText = "Чудовий переклад!";
+                    fb.classList.add('text-emerald-600');
+                } else {
+                    fb.innerText = `Зразок: "${keyAnswers[i-1][0]}"`;
+                    fb.classList.add('text-rose-600');
+                }
+            }
+            document.getElementById('ex4-result').innerText = `Оцінено! Вірних: ${score}/4`;
+        }
+
+        // On window load
+        window.onload = function() {
+            renderVocabulary();
+        };
+    </script>
+</body>
+</html>
